@@ -555,6 +555,67 @@ const db = {
     data.adminAuth.updatedAt = new Date().toISOString();
     saveData(data);
     return { success: true, username: data.adminAuth.username };
+  },
+
+  // Contador e Estatísticas de Visitas em Tempo Real
+  recordVisit({ path, userAgent, ip }) {
+    const data = loadData();
+    if (!data.analytics) {
+      data.analytics = {
+        totalVisits: 0,
+        dailyVisits: {},
+        pages: {},
+        recentVisits: []
+      };
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    const now = new Date().toISOString();
+
+    data.analytics.totalVisits = (data.analytics.totalVisits || 0) + 1;
+    if (!data.analytics.dailyVisits) data.analytics.dailyVisits = {};
+    data.analytics.dailyVisits[today] = (data.analytics.dailyVisits[today] || 0) + 1;
+
+    const cleanPath = path || '/';
+    if (!data.analytics.pages) data.analytics.pages = {};
+    data.analytics.pages[cleanPath] = (data.analytics.pages[cleanPath] || 0) + 1;
+
+    // Detect device
+    const isMobile = /mobile|iphone|android|ipad/i.test(userAgent || '');
+    const device = isMobile ? '📱 Celular' : '💻 Computador';
+
+    if (!data.analytics.recentVisits) data.analytics.recentVisits = [];
+    data.analytics.recentVisits.unshift({
+      path: cleanPath,
+      timestamp: now,
+      device
+    });
+
+    if (data.analytics.recentVisits.length > 50) {
+      data.analytics.recentVisits = data.analytics.recentVisits.slice(0, 50);
+    }
+
+    saveData(data);
+    return data.analytics;
+  },
+
+  getAnalytics() {
+    const data = loadData();
+    const analytics = data.analytics || {
+      totalVisits: 0,
+      dailyVisits: {},
+      pages: {},
+      recentVisits: []
+    };
+    const today = new Date().toISOString().split('T')[0];
+    const todayVisits = (analytics.dailyVisits && analytics.dailyVisits[today]) || 0;
+
+    return {
+      totalVisits: analytics.totalVisits || 0,
+      todayVisits,
+      pages: analytics.pages || {},
+      recentVisits: analytics.recentVisits || []
+    };
   }
 };
 

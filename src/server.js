@@ -307,16 +307,36 @@ app.post('/api/contact', (req, res) => {
   }
 });
 
+// Visitor Tracking Endpoint (Public, silent)
+app.post('/api/track-visit', (req, res) => {
+  try {
+    const { path } = req.body || {};
+    const userAgent = req.headers['user-agent'] || '';
+    const ip = req.ip || req.connection?.remoteAddress || '';
+    if (path && !path.startsWith('/admin')) {
+      db.recordVisit({ path, userAgent, ip });
+    }
+    res.json({ success: true });
+  } catch (err) {
+    res.status(200).json({ success: false });
+  }
+});
+
 app.get('/api/admin/metrics', (req, res) => {
   const orders = db.getOrders();
   const leads = db.getLeads();
+  const analytics = db.getAnalytics();
   const totalRevenue = orders.reduce((acc, curr) => acc + (Number(curr.totalAmount) || 0), 0);
   const activeProjects = orders.filter(o => o.currentStageIndex >= 1 && o.currentStageIndex <= 6).length;
   res.json({
     totalOrders: orders.length,
     totalRevenue,
     activeProjects,
-    totalLeads: leads.length
+    totalLeads: leads.length,
+    totalVisits: analytics.totalVisits,
+    todayVisits: analytics.todayVisits,
+    pages: analytics.pages,
+    recentVisits: analytics.recentVisits
   });
 });
 

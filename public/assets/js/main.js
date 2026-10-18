@@ -291,4 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initDynamicContent();
+
+  // 5. Contador de Visitas em Tempo Real (ignora o painel /admin)
+  if (!window.location.pathname.startsWith('/admin')) {
+    try {
+      fetch('/api/track-visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: window.location.pathname })
+      }).catch(() => {});
+    } catch (e) {}
+  }
 });

@@ -43,31 +43,49 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     
-    <!-- CARDS DE MÉTRICAS OPERACIONAIS -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <!-- CARDS DE MÉTRICAS OPERACIONAIS & VISITAS -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
       
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total de Pedidos</div>
-        <div class="text-3xl font-extrabold text-slate-900 mt-1" id="metric-total-orders">0</div>
-        <div class="text-xs text-blue-600 mt-1">Na plataforma</div>
+      <div class="bg-gradient-to-br from-[#0B1528] to-[#050D1E] p-4.5 rounded-2xl border border-cyan-500/30 shadow-md text-white">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider">Visitas Totais</span>
+          <span class="text-xs">🌐</span>
+        </div>
+        <div class="text-2xl font-extrabold text-cyan-300 mt-1" id="metric-total-visits">0</div>
+        <div class="text-[10px] text-slate-400 mt-1">Acessos no site</div>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Faturamento Total</div>
-        <div class="text-3xl font-extrabold text-emerald-600 mt-1" id="metric-total-revenue">R$ 0,00</div>
-        <div class="text-xs text-slate-500 mt-1">PIX e Cartão confirmados</div>
+      <div class="bg-gradient-to-br from-[#0B1528] to-[#050D1E] p-4.5 rounded-2xl border border-orange-500/30 shadow-md text-white">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-orange-400 uppercase tracking-wider">Visitas Hoje</span>
+          <span class="text-xs">⚡</span>
+        </div>
+        <div class="text-2xl font-extrabold text-orange-400 mt-1" id="metric-today-visits">0</div>
+        <div class="text-[10px] text-slate-400 mt-1">Últimas 24 horas</div>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Projetos Ativos</div>
-        <div class="text-3xl font-extrabold text-blue-600 mt-1" id="metric-active-projects">0</div>
-        <div class="text-xs text-slate-500 mt-1">Em produção e revisão</div>
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Pedidos</div>
+        <div class="text-2xl font-extrabold text-slate-900 mt-1" id="metric-total-orders">0</div>
+        <div class="text-[10px] text-blue-600 mt-1">Na plataforma</div>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Contatos Recebidos</div>
-        <div class="text-3xl font-extrabold text-orange-600 mt-1" id="metric-total-leads">0</div>
-        <div class="text-xs text-slate-500 mt-1">Leads via formulário</div>
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Faturamento</div>
+        <div class="text-2xl font-extrabold text-emerald-600 mt-1" id="metric-total-revenue">R$ 0,00</div>
+        <div class="text-[10px] text-slate-500 mt-1">PIX e Cartão</div>
+      </div>
+
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Projetos Ativos</div>
+        <div class="text-2xl font-extrabold text-blue-600 mt-1" id="metric-active-projects">0</div>
+        <div class="text-[10px] text-slate-500 mt-1">Em produção</div>
+      </div>
+
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Contatos</div>
+        <div class="text-2xl font-extrabold text-orange-600 mt-1" id="metric-total-leads">0</div>
+        <div class="text-[10px] text-slate-500 mt-1">Leads via site</div>
       </div>
 
     </div>
@@ -76,6 +94,9 @@
     <div class="flex items-center gap-2 mb-6 border-b border-slate-200 pb-3 overflow-x-auto text-xs font-bold">
       <button class="admin-nav-tab bg-zunko-blue text-white px-4 py-2 rounded-xl" data-tab="pedidos">
         📦 Gestão de Pedidos
+      </button>
+      <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="visitas">
+        📊 Contador de Visitas & Tráfego
       </button>
       <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="video">
         🎬 Vídeo Propaganda Oficial
@@ -410,6 +431,68 @@
             </button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- SEÇÃO: CONTADOR DE VISITAS & TRÁFEGO -->
+    <div class="admin-section bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden hidden" id="section-visitas">
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900">Monitor de Acessos & Visitas em Tempo Real</h3>
+          <p class="text-xs text-slate-500">Métricas transparentes dos visitantes que navegam no seu site.</p>
+        </div>
+        <button id="btn-refresh-visits" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span>Atualizar Visitas</span>
+        </button>
+      </div>
+
+      <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Páginas Mais Acessadas -->
+          <div class="border border-slate-100 rounded-2xl p-5 bg-slate-50/50">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">🔥 Páginas Mais Visitadas</h4>
+            <div id="top-pages-list" class="space-y-2.5 text-xs">
+              <div class="text-slate-400 py-3 text-center">Nenhum dado registrado ainda.</div>
+            </div>
+          </div>
+
+          <!-- Resumo de Dispositivos -->
+          <div class="border border-slate-100 rounded-2xl p-5 bg-slate-50/50">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">📱 Acessos por Dispositivo</h4>
+            <div id="devices-summary" class="space-y-3 text-xs">
+              <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200">
+                <span class="font-semibold text-slate-700 flex items-center gap-2">📱 Celular (Mobile)</span>
+                <span id="visits-mobile-count" class="font-bold text-blue-600 text-sm">0</span>
+              </div>
+              <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200">
+                <span class="font-semibold text-slate-700 flex items-center gap-2">💻 Computador (Desktop)</span>
+                <span id="visits-desktop-count" class="font-bold text-cyan-600 text-sm">0</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Histórico dos Últimos Acessos -->
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">🕒 Últimos Acessos ao Vivo</h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-2xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase border-b">
+              <tr>
+                <th class="py-3 px-4">Horário / Data</th>
+                <th class="py-3 px-4">Página Visitada</th>
+                <th class="py-3 px-4">Dispositivo</th>
+              </tr>
+            </thead>
+            <tbody id="recent-visits-table-body" class="divide-y divide-slate-100">
+              <tr>
+                <td colspan="3" class="py-6 text-center text-slate-400">Nenhum acesso registrado ainda.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 

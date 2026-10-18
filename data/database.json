@@ -340,5 +340,11 @@
     "salt": "e1d88467820f9541268f568b6b742ace",
     "passwordHash": "e2c92b2953b6dd35dc79d8a9d5c421f97527def0080148218be7c9965b43ae216820aa1ef442a4c19bbc566ad92612acbb338995a8562bb95eff9b96e8d0b947",
     "updatedAt": "2026-10-18T19:47:48.139Z"
+  },
+  "analytics": {
+    "totalVisits": 0,
+    "dailyVisits": {},
+    "pages": {},
+    "recentVisits": []
   }
 }

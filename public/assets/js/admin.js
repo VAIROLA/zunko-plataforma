@@ -98,19 +98,83 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPaymentSettings();
   }
 
-  // 1. METRICS
+  // 1. METRICS & VISITS
   async function loadMetrics() {
     try {
       const res = await fetch('/api/admin/metrics');
       const data = await res.json();
-      document.getElementById('metric-total-orders').textContent = data.totalOrders;
-      document.getElementById('metric-total-revenue').textContent = Number(data.totalRevenue).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-      document.getElementById('metric-active-projects').textContent = data.activeProjects;
-      document.getElementById('metric-total-leads').textContent = data.totalLeads;
+      document.getElementById('metric-total-orders').textContent = data.totalOrders || 0;
+      document.getElementById('metric-total-revenue').textContent = Number(data.totalRevenue || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      document.getElementById('metric-active-projects').textContent = data.activeProjects || 0;
+      document.getElementById('metric-total-leads').textContent = data.totalLeads || 0;
+
+      const elTotalVisits = document.getElementById('metric-total-visits');
+      const elTodayVisits = document.getElementById('metric-today-visits');
+      if (elTotalVisits) elTotalVisits.textContent = data.totalVisits || 0;
+      if (elTodayVisits) elTodayVisits.textContent = data.todayVisits || 0;
+
+      renderVisitsDetails(data);
     } catch (e) {
       console.error(e);
     }
   }
+
+  function renderVisitsDetails(data) {
+    // 1. Top Pages
+    const topPagesList = document.getElementById('top-pages-list');
+    if (topPagesList && data.pages) {
+      const entries = Object.entries(data.pages).sort((a, b) => b[1] - a[1]);
+      if (entries.length === 0) {
+        topPagesList.innerHTML = `<div class="text-slate-400 py-3 text-center">Nenhum dado registrado ainda.</div>`;
+      } else {
+        topPagesList.innerHTML = entries.map(([p, count]) => `
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-slate-200">
+            <span class="font-mono text-slate-800 truncate max-w-[200px] sm:max-w-[260px]">${p}</span>
+            <span class="font-bold bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full text-xs">${count} ${count === 1 ? 'visita' : 'visitas'}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    // 2. Devices count
+    const recents = data.recentVisits || [];
+    let mobiles = 0;
+    let desktops = 0;
+    recents.forEach(r => {
+      if (r.device && r.device.includes('Celular')) mobiles++;
+      else desktops++;
+    });
+    const elMobile = document.getElementById('visits-mobile-count');
+    const elDesktop = document.getElementById('visits-desktop-count');
+    if (elMobile) elMobile.textContent = mobiles;
+    if (elDesktop) elDesktop.textContent = desktops;
+
+    // 3. Recent Visits Table
+    const recentTable = document.getElementById('recent-visits-table-body');
+    if (recentTable) {
+      if (recents.length === 0) {
+        recentTable.innerHTML = `<tr><td colspan="3" class="py-6 text-center text-slate-400">Nenhum acesso registrado ainda.</td></tr>`;
+      } else {
+        recentTable.innerHTML = recents.map(r => {
+          const dateStr = new Date(r.timestamp).toLocaleString('pt-BR', {
+            day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'
+          });
+          return `
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-4 font-mono text-slate-500">${dateStr}</td>
+              <td class="py-3 px-4 font-semibold text-slate-800">${r.path}</td>
+              <td class="py-3 px-4 text-slate-600">${r.device}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+  }
+
+  document.getElementById('btn-refresh-visits')?.addEventListener('click', () => {
+    loadMetrics();
+    window.showToast?.('Estatísticas de visitas atualizadas!', 'success');
+  });
 
   // 2. ORDERS MANAGEMENT
   async function loadOrders() {
