@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png?v=4">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contratação e Checkout Seguro — ZUNKO Plataforma Comercial</title>
+  <meta name="description" content="Finalize a contratação do seu site ZUNKO com total segurança via PIX com 5% de desconto ou cartão de crédito em até 12x.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/style.css?v=3">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <!-- CABEÇALHO DO CHECKOUT -->
+  <header class="bg-white border-b border-slate-200 py-3.5 sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/assets/images/zunko-logo.png?v=3" alt="ZUNKO" class="zunko-nav-logo">
+      </a>
+      <div class="flex items-center gap-3">
+        <!-- Seletor de Idiomas Oficial ZUNKO (BR / IN / FR / ES) -->
+        <div class="zunko-lang-wrapper notranslate ml-1 mr-1">
+          <button type="button" class="zunko-lang-btn active" data-lang="pt" title="Português (Brasil)"><span>🇧🇷</span><span>BR</span></button>
+          <button type="button" class="zunko-lang-btn" data-lang="en" title="English (Inglês)"><span>🇺🇸</span><span>IN</span></button>
+          <button type="button" class="zunko-lang-btn" data-lang="fr" title="Français (Francês)"><span>🇫🇷</span><span>FR</span></button>
+          <button type="button" class="zunko-lang-btn" data-lang="es" title="Español (Espanhol)"><span>🇪🇸</span><span>ES</span></button>
+        </div>
+<div class="hidden sm:flex items-center gap-2 text-xs text-slate-500 font-medium">
+        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        <span>Ambiente Seguro SSL 256-Bit</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <!-- Stepper / Indicador das 4 Etapas -->
+      <div class="mb-10">
+        <div class="flex items-center justify-between relative max-w-2xl mx-auto">
+          
+          <div class="step-indicator flex flex-col items-center gap-1.5 relative z-10">
+            <div class="step-circle w-8 h-8 rounded-full bg-zunko-blue text-white flex items-center justify-center font-bold text-sm shadow">1</div>
+            <span class="text-[11px] font-bold text-slate-700">1. Plano</span>
+          </div>
+
+          <div class="flex-1 h-0.5 bg-slate-200 -mt-5"></div>
+
+          <div class="step-indicator flex flex-col items-center gap-1.5 relative z-10">
+            <div class="step-circle w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-sm">2</div>
+            <span class="text-[11px] font-bold text-slate-700">2. Seus Dados</span>
+          </div>
+
+          <div class="flex-1 h-0.5 bg-slate-200 -mt-5"></div>
+
+          <div class="step-indicator flex flex-col items-center gap-1.5 relative z-10">
+            <div class="step-circle w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-sm">3</div>
+            <span class="text-[11px] font-bold text-slate-700">3. Pagamento</span>
+          </div>
+
+          <div class="flex-1 h-0.5 bg-slate-200 -mt-5"></div>
+
+          <div class="step-indicator flex flex-col items-center gap-1.5 relative z-10">
+            <div class="step-circle w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-sm">4</div>
+            <span class="text-[11px] font-bold text-slate-700">4. Confirmação</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PAINEL ETAPA 1: CONFIRMAÇÃO DO PLANO E ADICIONAIS -->
+      <div class="step-panel" id="panel-step-1">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-100 gap-4">
+            <div>
+              <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Etapa 1 de 4</span>
+              <h2 class="text-2xl font-extrabold text-slate-900 mt-0.5">Revise o Plano Escolhido</h2>
+            </div>
+            
+            <!-- Mudar Plano -->
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-slate-500 font-medium">Trocar plano:</label>
+              <select id="change-plan-select" class="text-xs font-bold border rounded-xl p-2 bg-slate-50 focus:bg-white text-slate-800"></select>
+            </div>
+          </div>
+
+          <!-- Resumo do Plano Atual -->
+          <div class="my-6 p-6 rounded-2xl bg-blue-50/50 border border-blue-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-xl font-bold text-slate-900" id="summary-plan-name">Carregando...</h3>
+                <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-0.5 rounded-full" id="summary-plan-pages"></span>
+              </div>
+              <p class="text-xs text-slate-500 mt-1" id="summary-plan-tagline"></p>
+              <div class="text-xs text-slate-600 mt-2">
+                Prazo estimado: <strong class="text-slate-900" id="summary-plan-prazo"></strong>
+              </div>
+            </div>
+
+            <div class="text-left sm:text-right">
+              <div class="text-xs text-slate-400">Preço do plano</div>
+              <div class="text-2xl font-extrabold text-blue-600" id="summary-plan-price">R$ 0,00</div>
+            </div>
+          </div>
+
+          <!-- Serviços Incluídos -->
+          <div class="mb-6">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Serviços e Recursos Inclusos:</h4>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="summary-plan-features"></ul>
+          </div>
+
+          <!-- Adicional Opcional: Planos de Manutenção Mensal -->
+          <div class="mb-8 pt-6 border-t border-slate-100">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h4 class="text-sm font-bold text-slate-900">Deseja incluir um Plano de Manutenção Mensal?</h4>
+                <p class="text-xs text-slate-500">Mantenha seu site sempre atualizado e seguro após a entrega (opcional).</p>
+              </div>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full">Opcional</span>
+            </div>
+            
+            <div class="space-y-2 mt-3" id="maintenance-options-container"></div>
+          </div>
+
+          <!-- Botão Avançar -->
+          <div class="pt-6 border-t border-slate-100 flex justify-end">
+            <button id="btn-step1-next" class="btn-primary text-sm py-3 px-8">
+              Avançar para Dados do Cliente →
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PAINEL ETAPA 2: DADOS DO CLIENTE (LGPD) -->
+      <div class="step-panel hidden" id="panel-step-2">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8">
+          
+          <div class="pb-6 border-b border-slate-100">
+            <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Etapa 2 de 4</span>
+            <h2 class="text-2xl font-extrabold text-slate-900 mt-0.5">Seus Dados e Informações do Negócio</h2>
+            <p class="text-xs text-slate-500 mt-1">Coleta mínima e protegida conforme a Lei Geral de Proteção de Dados (LGPD).</p>
+          </div>
+
+          <form id="customer-info-form" class="space-y-4 my-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Nome Completo ou Razão Social *</label>
+                <input type="text" id="cust-name" required placeholder="Ex: Lucas Mendes ou Mendes ME" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">CPF ou CNPJ (para emissão de recibo/contrato) *</label>
+                <input type="text" id="cust-doc" required placeholder="000.000.000-00 ou CNPJ" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">E-mail Principal para Notificações *</label>
+                <input type="email" id="cust-email" required placeholder="seu@email.com" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Telefone ou WhatsApp com DDD *</label>
+                <input type="tel" id="cust-phone" required placeholder="(11) 98888-7777" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Nome da Empresa ou Marca *</label>
+                <input type="text" id="cust-company" required placeholder="Ex: Studio Bella" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Segmento de Atuação *</label>
+                <input type="text" id="cust-segment" required placeholder="Ex: Odontologia / Advocacia / Comércio" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Observações Iniciais sobre o Projeto (opcional)</label>
+              <textarea id="cust-notes" rows="2" placeholder="Algum detalhe ou prazo especial que gostaria de compartilhar?" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+
+            <div class="flex items-start gap-2.5 pt-2">
+              <input type="checkbox" id="cust-terms" required checked class="mt-1 text-blue-600 focus:ring-blue-500 rounded">
+              <label for="cust-terms" class="text-xs text-slate-600">
+                Concordo com os <a href="/termos" target="_blank" class="text-blue-600 underline">Termos de Contratação</a> e com a <a href="/privacidade" target="_blank" class="text-blue-600 underline">Política de Privacidade</a> da ZUNKO.
+              </label>
+            </div>
+
+          </form>
+
+          <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+            <button id="btn-step2-back" class="text-xs font-bold text-slate-500 hover:text-slate-800">
+              ← Voltar para Revisão do Plano
+            </button>
+            <button id="btn-step2-next" class="btn-primary text-sm py-3 px-8">
+              Avançar para Pagamento →
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PAINEL ETAPA 3: ESCOLHA DA FORMA DE PAGAMENTO -->
+      <div class="step-panel hidden" id="panel-step-3">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Coluna 1 & 2: Seleção e Formulário de Pagamento -->
+          <div class="md:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8">
+            
+            <div class="pb-6 border-b border-slate-100">
+              <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Etapa 3 de 4</span>
+              <h2 class="text-2xl font-extrabold text-slate-900 mt-0.5">Forma de Pagamento</h2>
+              <p class="text-xs text-slate-500 mt-1">Escolha como deseja realizar o pagamento da contratação.</p>
+            </div>
+
+            <!-- Abas PIX vs Cartão -->
+            <div class="grid grid-cols-2 gap-3 my-6">
+              <button class="payment-method-tab border-2 border-zunko-blue bg-blue-50/50 text-zunko-blue rounded-2xl p-4 flex flex-col items-center justify-center gap-1 font-bold text-sm transition" data-method="pix">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.8L18.2 12 12 18.2 5.8 12 12 5.8z"/></svg>
+                <span>PIX Instantâneo</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">5% OFF À VISTA</span>
+              </button>
+
+              <button class="payment-method-tab border-2 border-transparent text-slate-500 hover:bg-slate-50 rounded-2xl p-4 flex flex-col items-center justify-center gap-1 font-bold text-sm transition" data-method="cartao">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                <span>Cartão de Crédito</span>
+                <span class="text-[10px] text-slate-400 font-normal">Até 12x</span>
+              </button>
+            </div>
+
+            <!-- CONTEÚDO PIX -->
+            <!-- CONTEÚDO PIX -->
+            <div id="payment-pix-content" class="space-y-4">
+              <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+                <span class="inline-block text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full mb-3">
+                  PAGAMENTO INSTANTÂNEO • PAGBANK (5% OFF À VISTA)
+                </span>
+                
+                <!-- QR Code Dinâmico -->
+                <div class="w-52 h-52 mx-auto bg-white p-3 rounded-2xl border-2 border-emerald-500/30 shadow-md flex items-center justify-center mb-3">
+                  <img id="pix-qrcode-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=zunko.sites@hotmail.com" alt="QR Code PIX PagBank ZUNKO" class="w-full h-full object-contain">
+                </div>
+
+                <div class="text-xs text-slate-500 mb-0.5">Valor com desconto aplicado:</div>
+                <div class="text-2xl font-extrabold text-emerald-600 mb-4" id="pix-final-amount">R$ 0,00</div>
+
+                <!-- Detalhes Oficiais da Chave PIX -->
+                <div class="p-4 bg-white rounded-xl border border-slate-200 text-left text-xs space-y-2.5 mb-4 shadow-sm">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b pb-2">
+                    <div>
+                      <span class="text-slate-400 font-semibold block text-[11px]">CHAVE PIX OFICIAL (E-MAIL):</span>
+                      <strong class="font-mono text-slate-900 text-sm select-all" id="pix-key-display">zunko.sites@hotmail.com</strong>
+                    </div>
+                    <button type="button" id="copy-pix-key-btn" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-1.5 px-3 rounded-lg transition self-start sm:self-center">
+                      Copiar Chave
+                    </button>
+                  </div>
+
+                  <div class="flex justify-between items-center text-slate-600 text-xs">
+                    <span>Beneficiário:</span>
+                    <strong class="text-slate-900" id="pix-beneficiary-display">Ailton Paulo dos Santos</strong>
+                  </div>
+
+                  <div class="flex justify-between items-center text-slate-600 text-xs">
+                    <span>Instituição Financeira:</span>
+                    <strong class="text-slate-900" id="pix-bank-display">PagBank (PagSeguro)</strong>
+                  </div>
+                </div>
+
+                <!-- Chave Copia e Cola -->
+                <div class="text-left mb-1">
+                  <span class="text-[11px] font-bold text-slate-500 uppercase">Código PIX / Chave Copia e Cola:</span>
+                </div>
+                <div class="relative max-w-md mx-auto">
+                  <input type="text" id="pix-code-text" readonly value="zunko.sites@hotmail.com" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-xs font-mono text-slate-600 pr-28 focus:outline-none select-all">
+                  <button type="button" id="copy-pix-btn" class="absolute right-1.5 top-1.5 bottom-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3 rounded-lg flex items-center gap-1 transition">
+                    Copiar Chave
+                  </button>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-2">Após realizar a transferência no seu app, clique no botão abaixo para confirmar.</div>
+              </div>
+            </div>
+
+            <!-- CONTEÚDO CARTÃO DE CRÉDITO -->
+            <div id="payment-card-content" class="space-y-4 hidden">
+              
+              <!-- Card de Pagamento Direto PagBank Oficial (Opcional - só aparece se configurado link para o plano) -->
+              <div id="pagbank-link-container" class="space-y-4 hidden">
+                <div class="p-5 rounded-2xl bg-emerald-50/70 border-2 border-emerald-500/40 space-y-3">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-xs font-bold text-emerald-900 uppercase tracking-wider">Checkout PagBank Oficial (Até 12x)</span>
+                  </div>
+                  <p class="text-xs text-emerald-800 leading-relaxed">
+                    Prefere pagar com cartão de crédito diretamente pela página oficial e segura do PagBank? Clique no botão abaixo:
+                  </p>
+                  <a href="#" target="_blank" id="pagbank-official-btn" class="w-full bg-[#00A868] hover:bg-[#008f57] text-white font-bold text-sm py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-md transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    <span>Abrir Pagamento PagBank Oficial (Até 12x)</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+                </div>
+
+                <div class="flex items-center gap-3 my-2 text-slate-400 text-xs text-center">
+                  <span class="flex-1 h-px bg-slate-200"></span>
+                  <span>OU PREENCHA NO FORMULÁRIO ABAIXO</span>
+                  <span class="flex-1 h-px bg-slate-200"></span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Número do Cartão de Crédito</label>
+                  <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" class="w-full border rounded-xl p-3 text-sm bg-white focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Nome Impresso no Cartão</label>
+                  <input type="text" placeholder="NOME COMO NO CARTÃO" class="w-full border rounded-xl p-3 text-sm bg-white focus:ring-2 focus:ring-blue-500 uppercase">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Validade (MM/AA)</label>
+                    <input type="text" placeholder="12/28" maxlength="5" class="w-full border rounded-xl p-3 text-sm bg-white focus:ring-2 focus:ring-blue-500">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">CVV (Código de Segurança)</label>
+                    <input type="password" placeholder="123" maxlength="4" class="w-full border rounded-xl p-3 text-sm bg-white focus:ring-2 focus:ring-blue-500">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Opções de Parcelamento</label>
+                  <select id="card-installments" class="w-full border rounded-xl p-3 text-sm bg-white focus:ring-2 focus:ring-blue-500 font-medium"></select>
+                </div>
+                
+                <p class="text-[11px] text-slate-400">
+                  🔒 Dados criptografados de ponta a ponta. Nenhum dado do seu cartão é armazenado nos servidores da ZUNKO.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+              <button id="btn-step3-back" class="text-xs font-bold text-slate-500 hover:text-slate-800">
+                ← Voltar para Dados
+              </button>
+              <button id="btn-confirm-payment" class="btn-orange text-sm py-3 px-8">
+                Confirmar e Finalizar Contratação
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Coluna 3: Resumo Financeiro da Cobrança -->
+          <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 h-fit sticky top-28 space-y-4">
+            <h3 class="font-bold text-sm text-slate-900 border-b pb-3 uppercase tracking-wider">Resumo Financeiro</h3>
+            
+              <div id="calc-original-row" class="flex justify-between text-slate-400 hidden">
+                <span>Preço Original:</span>
+                <span id="calc-original" class="line-through">R$ 0,00</span>
+              </div>
+
+              <div id="calc-promo-row" class="flex justify-between text-orange-600 font-bold hidden">
+                <span>Desconto Promoção:</span>
+                <span id="calc-promo">- R$ 400,00</span>
+              </div>
+
+              <div class="flex justify-between">
+                <span>Subtotal Criação:</span>
+                <strong class="text-slate-900" id="calc-subtotal">R$ 0,00</strong>
+              </div>
+
+              <div id="calc-discount-row" class="flex justify-between text-emerald-600 font-bold hidden">
+                <span>Desconto PIX:</span>
+                <span id="calc-discount">- R$ 0,00</span>
+              </div>
+
+              <div id="calc-maintenance-row" class="flex justify-between text-indigo-600 font-medium hidden">
+                <span>Manutenção Mensal:</span>
+                <span id="calc-maintenance">R$ 0,00</span>
+              </div>
+            </div>
+
+            <div class="border-t pt-3 flex justify-between items-baseline">
+              <div>
+                <span class="text-xs text-slate-500 block">Total a pagar:</span>
+                <span id="pix-discount-badge" class="text-[10px] text-emerald-600 font-bold"></span>
+              </div>
+              <div class="text-2xl font-extrabold text-blue-600" id="calc-total">R$ 0,00</div>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl text-[11px] text-slate-500 leading-relaxed border border-slate-100">
+              ✓ Garantia de escopo conforme contrato comercial ZUNKO.<br>
+              ✓ Notificações enviadas por e-mail e WhatsApp.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PAINEL ETAPA 4: CONFIRMAÇÃO DO PEDIDO REALIZADO -->
+      <div class="step-panel hidden" id="panel-step-4">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 sm:p-12 text-center max-w-2xl mx-auto">
+          
+          <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-md shadow-emerald-500/20">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+
+          <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full">
+            Contratação Registrada com Sucesso!
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Parabéns pela decisão!</h2>
+          <p class="text-sm text-slate-600 mt-2">
+            Sua empresa deu o passo definitivo para uma presença digital marcante.
+          </p>
+
+          <!-- Dados do Pedido -->
+          <div class="my-6 p-6 rounded-2xl bg-slate-50 border border-slate-200 text-left text-xs space-y-2">
+            <div class="flex justify-between border-b pb-2">
+              <span class="text-slate-500 font-medium">Número do Pedido:</span>
+              <strong class="font-mono text-sm text-blue-600 font-bold" id="conf-order-number">ZNK-000000</strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Plano Contratado:</span>
+              <strong class="text-slate-800" id="conf-plan-name"></strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Valor Total Pago:</span>
+              <strong class="text-slate-800" id="conf-total-paid"></strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Forma de Pagamento:</span>
+              <strong class="text-slate-800" id="conf-payment-method"></strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Cliente Responsável:</span>
+              <strong class="text-slate-800" id="conf-customer-name"></strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">E-mail Cadastrado:</span>
+              <strong class="text-slate-800" id="conf-customer-email"></strong>
+            </div>
+          </div>
+
+          <!-- Próximos Passos -->
+          <div class="text-left bg-blue-50/60 p-5 rounded-2xl border border-blue-100 text-xs text-slate-700 mb-8 space-y-2">
+            <strong class="text-slate-900 block text-sm">📋 Próximos passos imediatos:</strong>
+            <p>1. Preencha agora o <strong>Formulário de Briefing</strong> com o logotipo e informações do seu site.</p>
+            <p>2. Assim que recebermos seus materiais, nossa equipe iniciará a etapa de desenvolvimento.</p>
+            <p>3. Você poderá acompanhar cada etapa em tempo real na sua Área do Cliente.</p>
+          </div>
+
+          <!-- Botões de Ação Imediata -->
+          <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <a id="btn-card-pagbank-final" href="#" target="_blank" class="hidden w-full sm:w-auto bg-[#00A868] hover:bg-[#008f57] text-white font-bold text-sm py-3.5 px-6 rounded-full flex items-center justify-center gap-2 shadow-lg transition">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+              <span>Abrir Cartão no PagBank (Até 12x)</span>
+            </a>
+            <a id="btn-whatsapp-receipt" href="#" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-3.5 px-6 rounded-full flex items-center justify-center gap-2 shadow-lg transition">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+              <span>Enviar Comprovante no WhatsApp</span>
+            </a>
+            <a id="btn-go-to-briefing" href="/briefing" class="btn-orange text-sm py-3.5 px-6">
+              Preencher Briefing do Projeto Agora →
+            </a>
+            <a id="btn-go-to-client-area" href="/area-cliente" class="btn-outline text-sm py-3.5 px-6">
+              Área do Cliente
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-6 text-xs text-center text-slate-500">
+    <div class="max-w-4xl mx-auto px-4">
+      © 2026 ZUNKO — Sua ideia ganha o mundo. Pagamentos processados com segurança.
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js?v=4"></script>
+  <script src="/assets/js/checkout.js?v=4"></script>
+  <script src="/assets/js/i18n.js?v=3"></script>
+</body>
+</html>

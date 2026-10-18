@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png?v=4">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo — ZUNKO Gestão da Plataforma</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/style.css?v=3">
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased">
+
+  <!-- BARRA DE TOPO DO ADMIN BLINDADO -->
+  <header class="bg-slate-900 text-white py-3.5 px-6 border-b border-slate-800 flex items-center justify-between sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <img src="/assets/images/zunko-logo.png?v=3" alt="ZUNKO" class="zunko-nav-logo brightness-125">
+      <span class="text-xs font-bold bg-blue-600 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Painel Administrativo</span>
+      <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-[11px] font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Sessão Blindada
+      </span>
+    </div>
+
+    <div class="flex items-center gap-4 text-xs">
+      <div class="hidden md:flex items-center gap-2 text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <span>Conectado: <strong id="admin-user-display" class="text-white">Admin</strong></span>
+      </div>
+      <a href="/" target="_blank" class="text-slate-300 hover:text-white flex items-center gap-1">
+        <span>Ver Site Oficial</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+      </a>
+      <button id="admin-logout-btn" class="bg-red-950/60 hover:bg-red-900/80 text-red-300 border border-red-500/30 px-3 py-1.5 rounded-lg font-semibold transition flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        <span>Sair</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- CARDS DE MÉTRICAS OPERACIONAIS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total de Pedidos</div>
+        <div class="text-3xl font-extrabold text-slate-900 mt-1" id="metric-total-orders">0</div>
+        <div class="text-xs text-blue-600 mt-1">Na plataforma</div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Faturamento Total</div>
+        <div class="text-3xl font-extrabold text-emerald-600 mt-1" id="metric-total-revenue">R$ 0,00</div>
+        <div class="text-xs text-slate-500 mt-1">PIX e Cartão confirmados</div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Projetos Ativos</div>
+        <div class="text-3xl font-extrabold text-blue-600 mt-1" id="metric-active-projects">0</div>
+        <div class="text-xs text-slate-500 mt-1">Em produção e revisão</div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Contatos Recebidos</div>
+        <div class="text-3xl font-extrabold text-orange-600 mt-1" id="metric-total-leads">0</div>
+        <div class="text-xs text-slate-500 mt-1">Leads via formulário</div>
+      </div>
+
+    </div>
+
+    <!-- ABAS DE GESTÃO DO ADMIN -->
+    <div class="flex items-center gap-2 mb-6 border-b border-slate-200 pb-3 overflow-x-auto text-xs font-bold">
+      <button class="admin-nav-tab bg-zunko-blue text-white px-4 py-2 rounded-xl" data-tab="pedidos">
+        📦 Gestão de Pedidos
+      </button>
+      <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="video">
+        🎬 Vídeo Propaganda Oficial
+      </button>
+      <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="planos">
+        💻 Frentes dos 5 Planos & Preços
+      </button>
+      <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="portfolio">
+        🖼️ Frentes dos Sites Demonstrativos (Portfólio)
+      </button>
+      <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="leads">
+        💬 Contatos / Orçamentos Recebidos
+      </button>
+      <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="pagamento">
+        💳 Pagamento (PIX & PagBank)
+      </button>
+    </div>
+
+    <!-- SEÇÃO 1: GESTÃO DE PEDIDOS -->
+    <div class="admin-section bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden" id="section-pedidos">
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900">Lista de Pedidos e Andamento</h3>
+          <p class="text-xs text-slate-500">Altere a etapa do projeto (1 a 7) para atualizar em tempo real a Área do Cliente.</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[800px]">
+          <thead>
+            <tr class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b">
+              <th class="py-3 px-4">Pedido</th>
+              <th class="py-3 px-4">Cliente / Empresa</th>
+              <th class="py-3 px-4">Plano</th>
+              <th class="py-3 px-4">Valor Total</th>
+              <th class="py-3 px-4">Pagamento</th>
+              <th class="py-3 px-4">Etapa Atual do Projeto</th>
+              <th class="py-3 px-4 text-right">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="orders-table-body" class="divide-y divide-slate-100">
+            <tr><td colspan="7" class="py-8 text-center text-slate-400 text-xs">Carregando pedidos...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 2: VÍDEO PROPAGANDA OFICIAL DA ZUNKO (HOME) -->
+    <div class="admin-section hidden" id="section-video">
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-100 gap-4 mb-6">
+          <div>
+            <h3 class="font-bold text-xl text-slate-900 flex items-center gap-2">
+              <span>🎬</span> Vídeo Propaganda & Institucional da ZUNKO
+            </h3>
+            <p class="text-xs text-slate-500 mt-1">
+              Suba o vídeo propaganda ou cole um link (YouTube, Vimeo ou MP4). Ele será exibido com destaque na Seção 1 da Página Inicial.
+            </p>
+          </div>
+          <a href="/#video-player-container" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-zunko-blue hover:underline bg-blue-50 px-3 py-2 rounded-xl border border-blue-200 self-start">
+            <span>Ver Vídeo na Página Inicial</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Lado Esquerdo: Formulário de Configuração & Upload -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Upload Direto de Arquivo de Vídeo -->
+            <div class="p-5 rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/40 hover:bg-blue-50/70 transition">
+              <label class="block font-bold text-sm text-slate-900 mb-1 flex items-center gap-2">
+                <span>📁</span> 1. Subir Arquivo de Vídeo do Computador
+              </label>
+              <p class="text-xs text-slate-500 mb-3">Formatos suportados: MP4, WebM, MOV. (Tamanho máximo recomendado: 150MB).</p>
+              
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <input type="file" id="video-file-input" accept="video/mp4,video/webm,video/ogg,video/quicktime" class="text-xs text-slate-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
+                <button type="button" id="btn-upload-video-file" class="btn-primary text-xs py-2 px-4 whitespace-nowrap flex items-center justify-center gap-1.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                  <span>Enviar Vídeo</span>
+                </button>
+              </div>
+              <div id="video-upload-progress" class="hidden mt-3">
+                <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                  <div class="bg-blue-600 h-2 rounded-full transition-all duration-300 w-0" id="video-progress-bar"></div>
+                </div>
+                <span class="text-[11px] text-blue-700 font-semibold mt-1 block" id="video-progress-text">Enviando vídeo para o servidor...</span>
+              </div>
+            </div>
+
+            <!-- OU Link de Vídeo (YouTube, Vimeo ou URL Direta) -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/60">
+              <label class="block font-bold text-sm text-slate-900 mb-1 flex items-center gap-2">
+                <span>🔗</span> OU Inserir Link do Vídeo (YouTube / Vimeo / MP4 Externo)
+              </label>
+              <p class="text-xs text-slate-500 mb-2">Cole o link completo do YouTube (ex: https://youtube.com/watch?v=...), Vimeo ou link direto.</p>
+              <input type="url" id="video-url-input" placeholder="https://www.youtube.com/watch?v=..." class="w-full border rounded-xl p-2.5 text-xs text-slate-900 bg-white">
+            </div>
+
+            <!-- Upload da Imagem de Capa (Poster) -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/60">
+              <label class="block font-bold text-sm text-slate-900 mb-1 flex items-center gap-2">
+                <span>🖼️</span> Imagem de Capa do Vídeo (Poster/Thumbnail Opcional)
+              </label>
+              <p class="text-xs text-slate-500 mb-2">Imagem que aparece antes do visitante dar play no vídeo.</p>
+              <div class="flex items-center gap-3">
+                <input type="file" id="poster-file-input" accept="image/*" class="text-xs text-slate-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-700 file:text-white hover:file:bg-slate-800 cursor-pointer">
+                <button type="button" id="btn-upload-poster-file" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-2 px-3 rounded-xl transition">
+                  Enviar Capa
+                </button>
+              </div>
+            </div>
+
+            <!-- Textos da Seção do Vídeo na Home -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-3">
+              <h4 class="font-bold text-sm text-slate-900">Textos que Aparecem na Moldura do Vídeo:</h4>
+              <div>
+                <label class="text-xs font-bold text-slate-600 block mb-1">Etiqueta Superior:</label>
+                <input type="text" id="video-badge-input" value="Vídeo Institucional ZUNKO" class="w-full border rounded-xl p-2.5 text-xs text-slate-900 bg-white">
+              </div>
+              <div>
+                <label class="text-xs font-bold text-slate-600 block mb-1">Título do Vídeo:</label>
+                <input type="text" id="video-title-input" value="Por que um site profissional multiplica suas vendas?" class="w-full border rounded-xl p-2.5 text-xs text-slate-900 bg-white">
+              </div>
+              <div>
+                <label class="text-xs font-bold text-slate-600 block mb-1">Subtítulo / Descrição Curta:</label>
+                <input type="text" id="video-subtitle-input" value="Descubra a metodologia da ZUNKO para posicionar sua marca com excelência." class="w-full border rounded-xl p-2.5 text-xs text-slate-900 bg-white">
+              </div>
+            </div>
+
+            <button type="button" id="btn-save-video-settings" class="btn-primary w-full py-3 text-sm font-bold shadow-lg">
+              💾 Salvar Todas as Alterações do Vídeo Propaganda
+            </button>
+
+          </div>
+
+          <!-- Lado Direito: Preview em Tempo Real do Vídeo -->
+          <div class="lg:col-span-5">
+            <div class="sticky top-24 bg-slate-900 rounded-3xl p-5 border border-slate-800 text-white shadow-xl">
+              <div class="flex items-center justify-between mb-3 pb-3 border-b border-slate-800">
+                <span class="text-xs font-bold text-cyan-400 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                  Pré-visualização do Player
+                </span>
+                <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono" id="video-status-tag">Sem vídeo</span>
+              </div>
+
+              <!-- Container de Preview do Player -->
+              <div id="admin-preview-player-container" class="aspect-video rounded-2xl overflow-hidden bg-black flex items-center justify-center relative border border-slate-800">
+                <div class="text-center p-4 text-slate-400 text-xs" id="admin-video-placeholder">
+                  <svg class="w-12 h-12 mx-auto mb-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                  <span>Nenhum arquivo de vídeo carregado ainda.<br>Suba um arquivo MP4 ao lado ou cole um link.</span>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-300 space-y-1">
+                <div><strong class="text-slate-400">Vídeo Atual:</strong> <span id="admin-current-video-path" class="text-cyan-300 font-mono text-[11px] break-all">Nenhum</span></div>
+                <div><strong class="text-slate-400">Tipo:</strong> <span id="admin-current-video-type" class="text-slate-200 font-semibold">-</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 3: GESTÃO DOS 5 PLANOS & FRENTES DE CADA SITE (MOCKUPS) -->
+    <div class="admin-section hidden" id="section-planos">
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-100 gap-4 mb-6">
+          <div>
+            <h3 class="font-bold text-xl text-slate-900 flex items-center gap-2">
+              <span>💻</span> Frentes dos 5 Planos de Sites & Valores
+            </h3>
+            <p class="text-xs text-slate-500 mt-1">
+              Suba a imagem da <strong>frente de cada site (mockup/screenshot da tela inicial)</strong> e edite os preços e prazos. As fotos atualizam instantaneamente no carrossel da home e nas páginas dos planos!
+            </p>
+          </div>
+          <a href="/#planos-carrossel-section" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-zunko-blue hover:underline bg-blue-50 px-3 py-2 rounded-xl border border-blue-200 self-start">
+            <span>Ver Carrossel na Home</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-plans-list"></div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 4: FRENTES DOS SITES DE DEMONSTRAÇÃO (PORTFÓLIO DA SEÇÃO 5) -->
+    <div class="admin-section hidden" id="section-portfolio">
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-100 gap-4 mb-6">
+          <div>
+            <h3 class="font-bold text-xl text-slate-900 flex items-center gap-2">
+              <span>🖼️</span> Frentes dos Sites de Demonstração (Portfólio Seção 5)
+            </h3>
+            <p class="text-xs text-slate-500 mt-1">
+              Gerencie as fotos da frente dos sites demonstrativos por segmento (Restaurantes, Lojas, Salões, Profissionais Liberais, Empresas).
+            </p>
+          </div>
+          <button type="button" id="btn-add-portfolio-item" class="btn-primary text-xs py-2 px-4 flex items-center gap-1.5 self-start">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            <span>Adicionar Novo Modelo</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-portfolio-list"></div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 3: LEADS E MENSAGENS -->
+    <div class="admin-section hidden bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden" id="section-leads">
+      <div class="p-6 border-b border-slate-100">
+        <h3 class="font-bold text-lg text-slate-900">Mensagens Recebidas pelo Formulário de Contato</h3>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[700px]">
+          <thead>
+            <tr class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b">
+              <th class="py-3 px-4">Nome</th>
+              <th class="py-3 px-4">Contato</th>
+              <th class="py-3 px-4">Assunto</th>
+              <th class="py-3 px-4">Mensagem</th>
+              <th class="py-3 px-4 text-right">Data</th>
+            </tr>
+          </thead>
+          <tbody id="leads-table-body" class="divide-y divide-slate-100">
+            <tr><td colspan="5" class="py-8 text-center text-slate-400 text-xs">Nenhum contato registrado.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SEÇÃO PAGAMENTOS: PIX & PAGBANK -->
+    <div class="admin-section hidden bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8" id="section-pagamento">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Configuração Financeira Oficial</span>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900">PIX & PagBank</h3>
+        <p class="text-xs text-slate-500 mb-6">
+          Defina as chaves e links de pagamento que aparecem no checkout de todos os 5 planos da ZUNKO.
+        </p>
+
+        <form id="admin-payment-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Chave PIX Oficial (E-mail, CPF ou Telefone):</label>
+            <input type="text" id="cfg-pix-key" class="w-full border rounded-xl p-3 text-sm bg-slate-50 font-mono focus:bg-white focus:ring-2 focus:ring-blue-500" value="zunko.sites@hotmail.com" required>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Nome do Titular / Beneficiário:</label>
+              <input type="text" id="cfg-pix-beneficiary" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500" value="Ailton Paulo dos Santos" required>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Banco / Instituição:</label>
+              <input type="text" id="cfg-pix-bank" class="w-full border rounded-xl p-3 text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500" value="PagBank (PagSeguro)" required>
+            </div>
+          </div>
+
+          <!-- CONTROLE DE PROMOÇÃO POR TEMPO LIMITADO (R$ 400 OFF) -->
+          <div class="p-5 rounded-2xl bg-gradient-to-r from-red-50 to-orange-50 border-2 border-orange-300 shadow-sm space-y-3 my-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🔥</span>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">Campanha Promocional (Preços Riscados com R$ 400 OFF)</h4>
+                  <p class="text-xs text-slate-500">Ao marcar esta opção, o site exibe o preço cheio riscado e o valor com R$ 400 de desconto.</p>
+                </div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="cfg-promo-active" class="sr-only peer" checked>
+                <div class="w-12 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
+              </label>
+            </div>
+            
+            <div class="text-[11px] text-slate-600 bg-white/80 p-3 rounded-xl border border-orange-200">
+              💡 <strong>Como funciona o interruptor:</strong>
+              <ul class="list-disc list-inside mt-1 space-y-0.5">
+                <li><strong>Marcado (Ativo):</strong> Planos ficam por R$ 1.200, R$ 2.000, R$ 2.800, R$ 3.500 e R$ 4.200 (mostrando o preço cheio riscado) e usam os links promocionais.</li>
+                <li><strong>Desmarcado (Inativo):</strong> O site volta automaticamente para os preços cheios (R$ 1.600, R$ 2.400, R$ 3.200, R$ 3.900 e R$ 4.600) e os links de cartão regulares.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-100 pt-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#00A868]"></span>
+              <label class="block text-xs font-bold text-slate-800">Links Oficiais de Cartão PagBank (por Plano em até 12x):</label>
+            </div>
+            <p class="text-[11px] text-slate-500 mb-3">
+              Cada cliente que selecionar um plano no checkout terá o botão direto para o respectivo valor oficial no PagBank.
+            </p>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Plano 1 — Site Essencial (R$ 1.600,00):</label>
+                <input type="url" id="cfg-link-essencial" class="w-full border rounded-xl p-2.5 text-xs font-mono bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500" value="https://pag.ae/82f_w8JnR" placeholder="https://pag.ae/...">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Plano 2 — Site Profissional (R$ 2.400,00):</label>
+                <input type="url" id="cfg-link-profissional" class="w-full border rounded-xl p-2.5 text-xs font-mono bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500" value="https://pag.ae/82f_vqcun" placeholder="https://pag.ae/...">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Plano 3 — Site Empresarial Avançado (R$ 3.200,00):</label>
+                <input type="url" id="cfg-link-empresarial-avancado" class="w-full border rounded-xl p-2.5 text-xs font-mono bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500" value="https://pag.ae/82f_uXghH" placeholder="https://pag.ae/...">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Plano 4 — Site Premium (R$ 3.900,00):</label>
+                <input type="url" id="cfg-link-premium" class="w-full border rounded-xl p-2.5 text-xs font-mono bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500" value="https://pag.ae/82f_sU9Ba" placeholder="https://pag.ae/...">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Plano 5 — Site Completo Sofisticado (R$ 4.600,00):</label>
+                <input type="url" id="cfg-link-completo-sofisticado" class="w-full border rounded-xl p-2.5 text-xs font-mono bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500" value="https://pag.ae/82f_rxTVn" placeholder="https://pag.ae/...">
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp para Receber Comprovantes:</label>
+            <input type="text" id="cfg-whatsapp-confirm" class="w-full border rounded-xl p-3 text-sm bg-slate-50 font-mono focus:bg-white focus:ring-2 focus:ring-blue-500" value="5521966725240" required>
+          </div>
+
+          <div class="pt-4 border-t flex items-center justify-between">
+            <span class="text-xs text-slate-400">As alterações são refletidas na hora no checkout.</span>
+            <button type="submit" id="btn-save-payment-cfg" class="btn-primary text-xs py-2.5 px-6">
+              Salvar Configurações de Pagamento
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL DETALHES DO PEDIDO & BRIEFING -->
+  <div id="order-detail-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-4 border-b">
+        <h3 class="font-bold text-lg text-slate-900">Detalhes do Pedido & Briefing</h3>
+        <button id="close-order-modal" class="text-slate-400 hover:text-slate-700">✕</button>
+      </div>
+      <div id="order-detail-content" class="py-4"></div>
+    </div>
+  </div>
+
+  <script src="/assets/js/main.js?v=4"></script>
+  <script src="/assets/js/admin.js?v=4"></script>
+  <script src="/assets/js/i18n.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,613 @@
+/* ZUNKO Design System - Luminous Cyber & Fluorescent High-Tech */
+:root {
+  --zunko-blue: #0056D2;
+  --zunko-blue-dark: #002566;
+  --zunko-blue-neon: #00F0FF;
+  --zunko-blue-light: #38BDF8;
+  --zunko-orange: #FF6B00;
+  --zunko-orange-neon: #FF7700;
+  --zunko-orange-glow: rgba(255, 119, 0, 0.5);
+  --zunko-cyan-glow: rgba(0, 240, 255, 0.4);
+  --zunko-dark: #050B18;
+  --zunko-dark-surface: #091226;
+  --zunko-dark-card: #0E1A38;
+  --zunko-dark-card-hover: #14244D;
+  --zunko-border: rgba(0, 240, 255, 0.15);
+  --zunko-border-orange: rgba(255, 119, 0, 0.3);
+  --zunko-text-main: #F8FAFC;
+  --zunko-text-muted: #94A3B8;
+  --zunko-bg-light: #070D1E;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #E2E8F0;
+  background-color: #050B18;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 35%, rgba(255, 107, 0, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(0, 86, 210, 0.1) 0%, transparent 50%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Glassmorphism Navigation - Fundo em Degradê Azul Mais Claro e Luminoso */
+.nav-glass {
+  background: linear-gradient(135deg, rgba(16, 42, 98, 0.94) 0%, rgba(10, 26, 64, 0.96) 50%, rgba(14, 36, 84, 0.94) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.28);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), 0 0 35px rgba(0, 102, 255, 0.18), 0 1px 0 rgba(0, 240, 255, 0.15) inset;
+  transition: all 0.3s ease;
+}
+
+.nav-glass.scrolled {
+  background: linear-gradient(135deg, rgba(12, 32, 76, 0.97) 0%, rgba(8, 20, 50, 0.98) 50%, rgba(11, 28, 68, 0.97) 100%);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 140, 255, 0.25);
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-bottom-color: rgba(0, 240, 255, 0.35);
+}
+
+/* ZUNKO Logo Proportions - 3D Azul Original + Contorno Laranja Marcante */
+.zunko-nav-logo {
+  height: 4.5rem; /* 72px no celular */
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 16px rgba(0, 160, 255, 0.35)) drop-shadow(0 0 8px rgba(255, 110, 0, 0.3)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+@media (min-width: 640px) {
+  .zunko-nav-logo {
+    height: 5.5rem; /* 88px no tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .zunko-nav-logo {
+    height: 6.75rem; /* 108px no desktop para presença visual imponente e slogan 3D nítido */
+  }
+}
+
+.nav-glass.scrolled .zunko-nav-logo {
+  height: 4.25rem; /* 68px ao rolar a página */
+}
+
+.zunko-footer-logo {
+  height: 6.5rem; /* 104px no rodapé para máxima elegância e visibilidade */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 140, 255, 0.4)) drop-shadow(0 0 10px rgba(255, 110, 0, 0.35)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
+}
+
+/* Luminous Backgrounds & Ambient Meshes */
+.bg-gradient-zunko {
+  background: linear-gradient(135deg, #0044B8 0%, #001A4D 50%, #0A1128 100%);
+  position: relative;
+}
+
+.bg-gradient-hero {
+  background: 
+    radial-gradient(circle at 50% -10%, rgba(0, 240, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #050B18 0%, #081126 100%);
+}
+
+/* Fluorescent Text Gradients */
+.text-gradient-zunko {
+  background: linear-gradient(135deg, #00F0FF 0%, #38BDF8 40%, #FF7700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.3));
+}
+
+.text-gradient-orange {
+  background: linear-gradient(135deg, #FF7700 0%, #FFAA00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 119, 0, 0.4));
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00F0FF 0%, #0084FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.4));
+}
+
+/* Neon & Fluorescent Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #0066FF 0%, #0044B8 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.4), 0 4px 14px rgba(0, 0, 0, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0077FF 0%, #0052CC 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6), 0 8px 25px rgba(0, 0, 0, 0.5);
+  border-color: #00F0FF;
+}
+
+.btn-orange {
+  background: linear-gradient(135deg, #FF7700 0%, #E65500 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 25px rgba(255, 119, 0, 0.55), 0 4px 16px rgba(0, 0, 0, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 170, 0, 0.4);
+}
+
+.btn-orange:hover {
+  background: linear-gradient(135deg, #FF8800 0%, #FF6600 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(255, 119, 0, 0.8), 0 8px 28px rgba(255, 102, 0, 0.4);
+  border-color: #FFAA00;
+}
+
+.btn-outline {
+  border: 1.5px solid rgba(0, 240, 255, 0.4);
+  color: #00F0FF;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 0.7rem 1.6rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.btn-outline:hover {
+  border-color: #00F0FF;
+  color: #FFFFFF;
+  background: rgba(0, 240, 255, 0.18);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Luminous Cyber Cards */
+.card-plan {
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: 1.75rem;
+  background: linear-gradient(180deg, rgba(14, 26, 56, 0.85) 0%, rgba(9, 18, 38, 0.95) 100%);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-plan::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.5), transparent);
+}
+
+.card-plan:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.25);
+  border-color: rgba(0, 240, 255, 0.45);
+}
+
+.card-plan.featured {
+  border: 2px solid #FF7700;
+  background: linear-gradient(180deg, rgba(24, 32, 60, 0.9) 0%, rgba(14, 22, 46, 0.98) 100%);
+  box-shadow: 0 0 35px rgba(255, 119, 0, 0.3), 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.card-plan.featured::before {
+  background: linear-gradient(90deg, transparent, #FF7700, transparent);
+  height: 3px;
+}
+
+.card-plan.featured:hover {
+  box-shadow: 0 0 50px rgba(255, 119, 0, 0.5), 0 20px 50px rgba(0, 0, 0, 0.8);
+  border-color: #FFAA00;
+}
+
+/* Fluorescent Badges */
+.badge-popular {
+  background: linear-gradient(135deg, #FF7700 0%, #FF9900 100%);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(255, 119, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge-neon-blue {
+  background: rgba(0, 240, 255, 0.12);
+  color: #00F0FF;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+/* Custom Video Container */
+.video-wrapper {
+  position: relative;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0, 240, 255, 0.2), 0 30px 70px rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(0, 240, 255, 0.3);
+  background: #030712;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  background-color: #030712;
+}
+
+/* Mockup Frames */
+.browser-frame {
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: #081126;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.08);
+}
+
+.browser-header {
+  background: #0B1630;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.browser-dot.red { background: #FF3B30; box-shadow: 0 0 8px rgba(255, 59, 48, 0.6); }
+.browser-dot.yellow { background: #FFCC00; box-shadow: 0 0 8px rgba(255, 204, 0, 0.6); }
+.browser-dot.green { background: #00FF88; box-shadow: 0 0 8px rgba(0, 255, 136, 0.6); }
+
+.browser-url {
+  background: #060D1F;
+  border-radius: 9999px;
+  padding: 0.2rem 0.85rem;
+  font-size: 0.75rem;
+  color: #38BDF8;
+  margin-left: 0.5rem;
+  flex: 1;
+  max-width: 280px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  font-family: monospace;
+}
+
+/* Carousel Container & Responsive Cards - Sem cortes na tela */
+.carousel-track {
+  display: flex;
+  gap: 1.5rem; /* 24px */
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Mobile (<768px): 1 card por vez, 100% da largura, zero cortes */
+.card-plan {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Tablet (>=768px e <1200px): Exatamente 2 cards inteiros lado a lado */
+@media (min-width: 768px) {
+  .card-plan {
+    flex: 0 0 calc((100% - 24px) / 2) !important;
+    max-width: calc((100% - 24px) / 2) !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Desktop (>=1200px): Exatamente 3 cards inteiros lado a lado com encaixe perfeito */
+@media (min-width: 1200px) {
+  .card-plan {
+    flex: 0 0 calc((100% - 48px) / 3) !important;
+    max-width: calc((100% - 48px) / 3) !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Carousel controls */
+.carousel-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 26, 56, 0.8);
+  border: 1.5px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+  color: #00F0FF;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.carousel-nav-btn:hover {
+  background: #0066FF;
+  color: #FFFFFF;
+  border-color: #00F0FF;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+  transform: scale(1.08);
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  width: 32px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #00F0FF, #0066FF);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+}
+
+/* Fluorescent Glowing Line Divider */
+.neon-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.5), rgba(255, 119, 0, 0.5), transparent);
+}
+
+/* Custom Cyber Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050B18;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0E1A38;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0066FF;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+/* Glowing Pulse Animation */
+@keyframes neon-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.65));
+  }
+}
+
+.animate-neon {
+  animation: neon-pulse 3s infinite ease-in-out;
+}
+
+/* =========================================================
+   GLOBAL FLUORESCENT CYBER-DARK THEME OVERRIDES
+   Transforms all pages away from plain white into vibrant,
+   high-tech cyber dark with glowing neon accents
+   ========================================================= */
+
+body {
+  background-color: #050B18 !important;
+  color: #E2E8F0 !important;
+}
+
+/* Cards & Surfaces */
+.bg-white, .bg-slate-50, .bg-slate-100 {
+  background-color: #09142E !important;
+  border-color: rgba(0, 240, 255, 0.2) !important;
+  color: #E2E8F0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.bg-blue-50, .bg-blue-50\/50, .bg-blue-50\/60, .bg-blue-50\/70 {
+  background-color: rgba(0, 240, 255, 0.08) !important;
+  border-color: rgba(0, 240, 255, 0.25) !important;
+}
+
+.bg-orange-50, .bg-orange-50\/60 {
+  background-color: rgba(255, 119, 0, 0.1) !important;
+  border-color: rgba(255, 119, 0, 0.3) !important;
+}
+
+/* Text Hierarchy */
+.text-slate-900, .text-slate-800 {
+  color: #FFFFFF !important;
+}
+
+.text-slate-700 {
+  color: #F1F5F9 !important;
+}
+
+.text-slate-600, .text-slate-500 {
+  color: #94A3B8 !important;
+}
+
+.text-slate-400 {
+  color: #64748B !important;
+}
+
+/* Borders */
+.border-slate-200, .border-slate-100 {
+  border-color: rgba(0, 240, 255, 0.18) !important;
+}
+
+/* Navigation Links */
+header nav a {
+  color: #E2E8F0 !important;
+  transition: all 0.25s ease;
+}
+
+header nav a:hover {
+  color: #00F0FF !important;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+/* Headings Glow */
+h1 {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+}
+
+h2, h3, h4, h5 {
+  color: #FFFFFF !important;
+}
+
+/* Fluorescent Primary & Secondary Colors */
+.text-blue-600, .text-blue-700 {
+  color: #00F0FF !important;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.45));
+}
+
+.text-orange-600, .text-orange-500, .text-amber-500 {
+  color: #FF7700 !important;
+  filter: drop-shadow(0 0 10px rgba(255, 119, 0, 0.5));
+}
+
+.text-emerald-600, .text-emerald-500 {
+  color: #00FF88 !important;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.5));
+}
+
+/* Inputs, Selects & Forms */
+input, select, textarea {
+  background-color: #060D20 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(0, 240, 255, 0.3) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #00F0FF !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4) !important;
+  outline: none !important;
+}
+
+/* Tables in Comparison */
+table {
+  background-color: #09142E !important;
+  color: #E2E8F0 !important;
+}
+
+thead tr {
+  background-color: #050B18 !important;
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 240, 255, 0.06) !important;
+}
+
+tbody td {
+  border-color: rgba(0, 240, 255, 0.12) !important;
+}
+
+/* Stepper circles */
+.step-circle {
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+/* ==========================================================================
+   ZUNKO — Multi-Language Switcher (BR / IN / FR / ES) & Clean Google Translate
+   ========================================================================== */
+.zunko-lang-wrapper {
+  background: rgba(8, 20, 52, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  border-radius: 9999px;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.12), 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.zunko-lang-btn {
+  border-radius: 9999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+}
+
+.zunko-lang-btn:hover {
+  color: #FFFFFF;
+}
+
+.zunko-lang-btn.active {
+  background: #00F0FF !important;
+  color: #030816 !important;
+  font-weight: 900 !important;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.7) !important;
+}
+
+/* Ocultar barra feia e balões padrão do Google Translate */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}

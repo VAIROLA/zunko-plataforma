@@ -1,0 +1,344 @@
+{
+  "plans": [
+    {
+      "id": "essencial",
+      "name": "Site Essencial",
+      "tagline": "A entrada ideal para fortalecer sua presença digital",
+      "pagesLimit": "Até 3 páginas",
+      "price": 1200,
+      "prazo": "7 a 10 dias úteis",
+      "popular": false,
+      "description": "Destinado a pequenos negócios, autônomos e prestadores de serviços que precisam de um site moderno, rápido e com presença imediata no Google e WhatsApp.",
+      "indicacao": "Profissionais liberais, pequenos comércios e prestadores de serviços que buscam um primeiro site profissional.",
+      "features": [
+        "Layout profissional adaptado a celulares e tablets",
+        "Apresentação da empresa, serviços e canais de contato",
+        "Botão flutuante de WhatsApp de alta conversão",
+        "Links diretos para redes sociais",
+        "Configuração básica de SEO para o Google",
+        "Certificado de segurança SSL gratuito",
+        "Otimização de velocidade de carregamento"
+      ],
+      "notIncluded": [
+        "Domínio e hospedagem (pagos diretamente pelo cliente)",
+        "Blog ou área dinâmica de notícias",
+        "Integrações complexas com sistemas externos",
+        "Loja virtual ou pagamentos dentro do site"
+      ],
+      "mockupImage": "/uploads/sites/mockup-essencial-1792273323807.jpg",
+      "cardPaymentLink": "https://pag.ae/82f_ULz12",
+      "originalPrice": 1600,
+      "promoActive": true,
+      "promoBadge": "🔥 OFERTA POR TEMPO LIMITADO • R$ 400 OFF",
+      "regularCardPaymentLink": "https://pag.ae/82f_w8JnR",
+      "promoCardPaymentLink": "https://pag.ae/82f_ULz12",
+      "regularPrice": 1600,
+      "promoPrice": 1200
+    },
+    {
+      "id": "profissional",
+      "name": "Site Profissional",
+      "tagline": "Para empresas que exigem uma apresentação comercial completa",
+      "pagesLimit": "Até 5 páginas",
+      "price": 2000,
+      "prazo": "10 a 15 dias úteis",
+      "popular": true,
+      "description": "Solução ideal para empresas que buscam credibilidade sólida, detalhamento de múltiplos serviços, formulários de captura e presença no mapa.",
+      "indicacao": "Empresas em expansão, consultórios, escritórios e negócios locais consolidados.",
+      "features": [
+        "Design personalizado, exclusivo e 100% responsivo",
+        "Páginas dedicadas: Início, Sobre, Serviços, Portfólio/Equipe e Contato",
+        "Formulário de contato seguro com envio direto para e-mail",
+        "Botão interativo de WhatsApp e chamada rápida",
+        "Integração completa com Google Maps e redes sociais",
+        "SEO básico e estrutura interna otimizada para buscas",
+        "Banner institucional com chamadas estratégicas",
+        "Certificado SSL e painel de acompanhamento"
+      ],
+      "notIncluded": [
+        "Domínio e hospedagem (pagos diretamente pelo cliente)",
+        "Blog com publicação recorrente de artigos",
+        "Integrações de API customizadas ou ERPs",
+        "Sistema de login ou área restrita"
+      ],
+      "mockupImage": "/uploads/sites/mockup-profissional-1792273332125.jpg",
+      "cardPaymentLink": "https://pag.ae/82f_U9ghR",
+      "originalPrice": 2400,
+      "promoActive": true,
+      "promoBadge": "🔥 OFERTA POR TEMPO LIMITADO • R$ 400 OFF",
+      "regularCardPaymentLink": "https://pag.ae/82f_vqcun",
+      "promoCardPaymentLink": "https://pag.ae/82f_U9ghR",
+      "regularPrice": 2400,
+      "promoPrice": 2000
+    },
+    {
+      "id": "empresarial-avancado",
+      "name": "Site Empresarial Avançado",
+      "tagline": "Estrutura robusta para posicionar sua marca como líder",
+      "pagesLimit": "Até 8 páginas",
+      "price": 2800,
+      "prazo": "15 a 20 dias úteis",
+      "popular": false,
+      "description": "Desenvolvido para médias empresas e marcas que produzem conteúdo, necessitam de catálogo detalhado de serviços ou portfólio rico.",
+      "indicacao": "Indústrias, empresas de médio porte, clínicas, imobiliárias e marcas com portfólio amplo.",
+      "features": [
+        "Identidade visual completa da ZUNKO aplicada ao seu projeto",
+        "Até 8 páginas estruturadas com arquitetura estratégica",
+        "Portfólio interativo, galeria de fotos ou catálogo de serviços",
+        "Blog institucional ou área de notícias integrada",
+        "Formulários personalizados por departamento ou serviço",
+        "SEO avançado integrado com Google Analytics e Tag Manager",
+        "Microinterações e animações visuais elegantes",
+        "Integração com WhatsApp comercial e canais múltiplos"
+      ],
+      "notIncluded": [
+        "Domínio e hospedagem (contratados à parte)",
+        "Comércio eletrônico com checkout de produtos",
+        "Integração de streaming ou áreas de membros"
+      ],
+      "mockupImage": "/uploads/sites/mockup-empresarial-avancado-1792273342884.jpg",
+      "cardPaymentLink": "https://pag.ae/82f_Tg7B2",
+      "originalPrice": 3200,
+      "promoActive": true,
+      "promoBadge": "🔥 OFERTA POR TEMPO LIMITADO • R$ 400 OFF",
+      "regularCardPaymentLink": "https://pag.ae/82f_uXghH",
+      "promoCardPaymentLink": "https://pag.ae/82f_Tg7B2",
+      "regularPrice": 3200,
+      "promoPrice": 2800
+    },
+    {
+      "id": "premium",
+      "name": "Site Premium",
+      "tagline": "Design exclusivo e alto desempenho para marcas de destaque",
+      "pagesLimit": "Até 12 páginas",
+      "price": 3500,
+      "prazo": "20 a 25 dias úteis",
+      "popular": false,
+      "description": "Uma experiência digital refinada, com design sob medida, máxima velocidade, animações fluidas e integrações estratégicas de captação.",
+      "indicacao": "Empresas consolidadas, startups de tecnologia, marcas de luxo e grandes escritórios corporativos.",
+      "features": [
+        "Design exclusivo, autoral e sob medida (sem templates genéricos)",
+        "Até 12 páginas detalhadas para serviços, cases, equipe e compliance",
+        "Blog corporativo, portfólio expandido ou catálogo avançado",
+        "Animações refinadas e elementos visuais interativos de alto nível",
+        "Integrações com ferramentas externas (CRM, RD Station, HubSpot, Mailchimp)",
+        "SEO técnico profundo e máxima pontuação no Google PageSpeed",
+        "Múltiplos formulários de conversão e rastreamento de pixels",
+        "Suporte prioritário durante todo o desenvolvimento"
+      ],
+      "notIncluded": [
+        "Domínio e hospedagem (pagos diretamente pelo cliente)",
+        "Desenvolvimento de sistemas de backend complexos ou portais bancários"
+      ],
+      "mockupImage": "/uploads/sites/mockup-premium-1792273379899.jpg",
+      "cardPaymentLink": "https://pag.ae/82f_SAo7H",
+      "originalPrice": 3900,
+      "promoActive": true,
+      "promoBadge": "🔥 OFERTA POR TEMPO LIMITADO • R$ 400 OFF",
+      "regularCardPaymentLink": "https://pag.ae/82f_sU9Ba",
+      "promoCardPaymentLink": "https://pag.ae/82f_SAo7H",
+      "regularPrice": 3900,
+      "promoPrice": 3500
+    },
+    {
+      "id": "completo-sofisticado",
+      "name": "Site Completo Sofisticado",
+      "tagline": "O ápice do desenvolvimento web institucional para grandes projetos",
+      "pagesLimit": "Até 15 páginas institucionais",
+      "price": 4200,
+      "prazo": "25 a 35 dias úteis",
+      "popular": false,
+      "description": "A solução definitiva do catálogo ZUNKO. Todo o poder da nossa equipe dedicado a criar uma obra-prima digital para sua corporação.",
+      "indicacao": "Grandes corporações, holdings, indústrias, redes de franquias e empresas de grande porte.",
+      "features": [
+        "Projeto visual premium 100% sob medida com prototipagem detalhada",
+        "Até 15 páginas institucionais completas com hierarquia visual impecável",
+        "Módulos avançados de blog, portfólio categorizado e catálogo rico",
+        "Formulários inteligentes com validação avançada e segmentação",
+        "Integrações completas com ERPs, CRMs e APIs externas viáveis",
+        "SEO técnico de nível corporativo e otimização extrema de performance",
+        "Treinamento básico em vídeo para sua equipe atualizar conteúdos",
+        "Manual da marca digital e documentação de entrega",
+        "Garantia estendida e suporte pós-entrega de 30 dias"
+      ],
+      "notIncluded": [
+        "Domínio e hospedagem (pagos diretamente pelo cliente)",
+        "Sistemas customizados com login de membros e streaming (orçados à parte)"
+      ],
+      "mockupImage": "/uploads/sites/mockup-completo-sofisticado-1792273374469.jpg",
+      "cardPaymentLink": "https://pag.ae/82f_RVGTR",
+      "originalPrice": 4600,
+      "promoActive": true,
+      "promoBadge": "🔥 OFERTA POR TEMPO LIMITADO • R$ 400 OFF",
+      "regularCardPaymentLink": "https://pag.ae/82f_rxTVn",
+      "promoCardPaymentLink": "https://pag.ae/82f_RVGTR",
+      "regularPrice": 4600,
+      "promoPrice": 4200
+    }
+  ],
+  "maintenancePlans": [
+    {
+      "id": "manut-basica",
+      "name": "Manutenção Básica",
+      "price": 100,
+      "period": "mês",
+      "scope": "Atualizações técnicas e verificação periódica de funcionamento."
+    },
+    {
+      "id": "manut-essencial",
+      "name": "Manutenção Essencial",
+      "price": 180,
+      "period": "mês",
+      "scope": "Manutenção básica e pequenas alterações de textos e informações."
+    },
+    {
+      "id": "manut-profissional",
+      "name": "Manutenção Profissional",
+      "price": 280,
+      "period": "mês",
+      "scope": "Atualizações técnicas, suporte ágil e inclusão limitada de conteúdos."
+    },
+    {
+      "id": "manut-premium",
+      "name": "Manutenção Premium",
+      "price": 400,
+      "period": "mês",
+      "scope": "Suporte prioritário, acompanhamento técnico contínuo e atualizações com limite contratual."
+    }
+  ],
+  "orders": [],
+  "briefings": [],
+  "leads": [],
+  "settings": {
+    "companyName": "ZUNKO",
+    "slogan": "Sua ideia ganha o mundo.",
+    "phone": "(21) 96672-5240",
+    "whatsapp": "5521966725240",
+    "email": "zunko.sites@hotmail.com",
+    "atendimentoHorario": "Segunda a Sexta, das 09:00 às 17:00 horas",
+    "pixDiscountPercent": 5,
+    "maxCardInstallments": 12,
+    "video": {
+      "title": "Por que um site profissional multiplica suas vendas?",
+      "subtitle": "Descubra a metodologia da ZUNKO para posicionar sua marca com excelência.",
+      "badge": "Vídeo Institucional ZUNKO",
+      "type": "file",
+      "url": "/uploads/videos/video-propaganda-1792272545168.mp4",
+      "posterUrl": "/uploads/videos/poster-1792272744539.png",
+      "fileName": "COMERCIAL ZUNKO.mp4",
+      "fileSize": 46713450
+    },
+    "portfolio": [
+      {
+        "id": "demo-gastronomia",
+        "category": "Gastronomia",
+        "categorySlug": "gastronomia",
+        "domain": "bistrogourmet.com.br",
+        "title": "Bistrô & Restaurante Gourmet",
+        "description": "Cardápio digital, reservas e mapa interativo.",
+        "planRecommended": "Profissional",
+        "image": "/uploads/portfolio/site-demo-gastronomia-1792280108024.jpg",
+        "demoUrl": "/planos/profissional"
+      },
+      {
+        "id": "demo-varejo",
+        "category": "Varejo & Moda",
+        "categorySlug": "lojas",
+        "domain": "boutiquemoda.com.br",
+        "title": "Catálogo de Produtos & Loja",
+        "description": "Catálogo fotográfico com link direto para compra.",
+        "planRecommended": "Empresarial Avançado",
+        "image": "/uploads/portfolio/site-demo-varejo-1792279437804.jpg",
+        "demoUrl": "/planos/empresarial-avancado"
+      },
+      {
+        "id": "demo-beleza",
+        "category": "Saúde & Beleza",
+        "categorySlug": "saloes",
+        "domain": "clinicabemestar.com.br",
+        "title": "Clínica Estética & Bem-Estar",
+        "description": "Procedimentos, depoimentos e agendamento WhatsApp.",
+        "planRecommended": "Profissional",
+        "image": "/uploads/portfolio/site-demo-beleza-1792280110503.jpg",
+        "demoUrl": "/planos/profissional"
+      },
+      {
+        "id": "demo-profissionais",
+        "category": "Profissionais",
+        "categorySlug": "profissionais",
+        "domain": "advocaciaoliveira.com.br",
+        "title": "Escritório de Advocacia & Consultoria",
+        "description": "Apresentação de áreas de atuação e agendamento.",
+        "planRecommended": "Site Essencial",
+        "image": "/uploads/portfolio/site-demo-profissionais-1792280058697.jpg",
+        "demoUrl": "/planos/essencial"
+      },
+      {
+        "id": "demo-empresas",
+        "category": "Corporativo B2B",
+        "categorySlug": "empresas",
+        "domain": "logisticsbrasil.com.br",
+        "title": "Empresa de Engenharia & Logística",
+        "description": "Projetos, frota, certificações e cotações online.",
+        "planRecommended": "Site Premium",
+        "image": "/uploads/portfolio/site-demo-empresas-1792279091662.jpg",
+        "demoUrl": "/planos/premium"
+      },
+      {
+        "id": "demo-sofisticado",
+        "category": "Holding & Indústria",
+        "categorySlug": "empresas",
+        "domain": "nexuscorp.com.br",
+        "title": "Grupo Industrial Internacional",
+        "description": "Portal multi-idiomas, relações com investidores e governança.",
+        "planRecommended": "Completo Sofisticado",
+        "image": "/uploads/portfolio/site-demo-sofisticado-1792279332244.jpg",
+        "demoUrl": "/planos/completo-sofisticado"
+      }
+    ],
+    "sede": "Maricá, RJ — Atendimento a clientes de todo o Brasil e exterior.",
+    "payment": {
+      "pixKey": "zunko.sites@hotmail.com",
+      "pixBeneficiary": "Ailton Paulo dos Santos",
+      "pixBank": "PagBank (PagSeguro)",
+      "cardPaymentLink": "https://pag.ae/82f_U9ghR",
+      "whatsappConfirm": "5521966725240",
+      "planCardLinks": {
+        "essencial": "https://pag.ae/82f_ULz12",
+        "profissional": "https://pag.ae/82f_U9ghR",
+        "empresarial-avancado": "https://pag.ae/82f_Tg7B2",
+        "premium": "https://pag.ae/82f_SAo7H",
+        "completo-sofisticado": "https://pag.ae/82f_RVGTR"
+      },
+      "regularPlanCardLinks": {
+        "essencial": "https://pag.ae/82f_w8JnR",
+        "profissional": "https://pag.ae/82f_vqcun",
+        "empresarial-avancado": "https://pag.ae/82f_uXghH",
+        "premium": "https://pag.ae/82f_sU9Ba",
+        "completo-sofisticado": "https://pag.ae/82f_rxTVn"
+      },
+      "promoPlanCardLinks": {
+        "essencial": "https://pag.ae/82f_ULz12",
+        "profissional": "https://pag.ae/82f_U9ghR",
+        "empresarial-avancado": "https://pag.ae/82f_Tg7B2",
+        "premium": "https://pag.ae/82f_SAo7H",
+        "completo-sofisticado": "https://pag.ae/82f_RVGTR"
+      }
+    },
+    "campaignActive": true,
+    "campaignBanner": "🔥 PROMOÇÃO POR TEMPO LIMITADO: TODOS OS SITES COM R$ 400 DE DESCONTO + 5% NO PIX!",
+    "promo": {
+      "active": true,
+      "badgeText": "🔥 OFERTA POR TEMPO LIMITADO • R$ 400 OFF",
+      "bannerText": "🔥 OFERTA DE LANÇAMENTO: TODOS OS PLANOS COM R$ 400 DE DESCONTO + 5% NO PIX À VISTA!",
+      "discount": 400
+    }
+  },
+  "adminAuth": {
+    "username": "admin",
+    "email": "zunko.sites@hotmail.com",
+    "salt": "e1d88467820f9541268f568b6b742ace",
+    "passwordHash": "e2c92b2953b6dd35dc79d8a9d5c421f97527def0080148218be7c9965b43ae216820aa1ef442a4c19bbc566ad92612acbb338995a8562bb95eff9b96e8d0b947",
+    "updatedAt": "2026-10-18T19:47:48.139Z"
+  }
+}
