@@ -137,8 +137,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 2. Devices count
+    // 2. Cidades & Estados dos Visitantes
     const recents = data.recentVisits || [];
+    const topCitiesList = document.getElementById('top-cities-list');
+    if (topCitiesList) {
+      const cityCounts = {};
+      recents.forEach(r => {
+        const loc = r.location || 'Brasil';
+        cityCounts[loc] = (cityCounts[loc] || 0) + 1;
+      });
+      const cityEntries = Object.entries(cityCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+      if (cityEntries.length === 0) {
+        topCitiesList.innerHTML = `<div class="text-slate-400 py-3 text-center">Nenhum dado de cidade registrado ainda.</div>`;
+      } else {
+        topCitiesList.innerHTML = cityEntries.map(([loc, count], idx) => `
+          <div class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200">
+            <span class="font-medium text-slate-800 truncate flex items-center gap-1.5 text-xs">
+              <span class="text-[10px] font-bold text-amber-500">#${idx + 1}</span>
+              ${loc}
+            </span>
+            <span class="font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full text-xs">${count}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    // 3. Devices count
     let mobiles = 0;
     let desktops = 0;
     recents.forEach(r => {
