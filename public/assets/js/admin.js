@@ -88,6 +88,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Atalhos rápidos ao clicar nos cards de métricas
+  document.getElementById('card-total-visits')?.addEventListener('click', () => {
+    document.querySelector('.admin-nav-tab[data-tab="visitas"]')?.click();
+  });
+  document.getElementById('card-today-visits')?.addEventListener('click', () => {
+    document.querySelector('.admin-nav-tab[data-tab="visitas"]')?.click();
+  });
+  document.getElementById('card-total-orders')?.addEventListener('click', () => {
+    document.querySelector('.admin-nav-tab[data-tab="pedidos"]')?.click();
+  });
+
+  if (window.location.hash === '#visitas') {
+    document.querySelector('.admin-nav-tab[data-tab="visitas"]')?.click();
+  }
+
   // Data Loading
   async function loadAllDashboardData() {
     loadMetrics();
