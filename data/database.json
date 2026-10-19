@@ -342,9 +342,19 @@
     "updatedAt": "2026-10-18T19:47:48.139Z"
   },
   "analytics": {
-    "totalVisits": 0,
-    "dailyVisits": {},
-    "pages": {},
-    "recentVisits": []
+    "totalVisits": 1,
+    "dailyVisits": {
+      "2026-10-18": 1
+    },
+    "pages": {
+      "/": 1
+    },
+    "recentVisits": [
+      {
+        "path": "/",
+        "timestamp": "2026-10-18T23:39:07.900Z",
+        "device": "💻 Computador"
+      }
+    ]
   }
 }

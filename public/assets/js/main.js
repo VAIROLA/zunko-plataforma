@@ -292,14 +292,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initDynamicContent();
 
-  // 5. Contador de Visitas em Tempo Real (ignora o painel /admin)
-  if (!window.location.pathname.startsWith('/admin')) {
-    try {
-      fetch('/api/track-visit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ path: window.location.pathname })
-      }).catch(() => {});
-    } catch (e) {}
+  // 5. Contador de Visitas em Tempo Real (ignora o administrador e o painel /admin)
+  const isAdmin = 
+    window.location.pathname.startsWith('/admin') ||
+    localStorage.getItem('zunko_is_admin') === 'true' ||
+    sessionStorage.getItem('zunko_admin_token') ||
+    sessionStorage.getItem('zunko_admin_auth') === 'true' ||
+    document.cookie.includes('zunko_admin_token');
+
+  if (!isAdmin) {
+    (async function trackRealVisitor() {
+      try {
+        let geo = { location: 'Brasil', city: '', state: '', country: 'Brasil' };
+        
+        // Cache location in sessionStorage to avoid repeated third-party requests
+        const cachedGeo = sessionStorage.getItem('zunko_geo_loc');
+        if (cachedGeo) {
+          try { geo = JSON.parse(cachedGeo); } catch (e) {}
+        } else {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            const res = await fetch('https://ipwho.is/', { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.success) {
+                const city = data.city || '';
+                const state = data.region_code || data.region || '';
+                const country = data.country === 'Brazil' ? 'Brasil' : (data.country || 'Brasil');
+                const parts = [];
+                if (city) parts.push(city);
+                if (state) parts.push(state);
+                if (country) parts.push(country);
+                geo = {
+                  location: parts.length > 0 ? parts.join(', ') : 'Brasil',
+                  city,
+                  state,
+                  country
+                };
+                sessionStorage.setItem('zunko_geo_loc', JSON.stringify(geo));
+              }
+            }
+          } catch (geoErr) {}
+        }
+
+        await fetch('/api/track-visit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            path: window.location.pathname,
+            location: geo.location,
+            city: geo.city,
+            state: geo.state,
+            country: geo.country
+          })
+        });
+      } catch (e) {}
+    })();
   }
 });

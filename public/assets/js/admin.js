@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (userBadge) {
         userBadge.textContent = data.user || 'Administrador';
       }
+      localStorage.setItem('zunko_is_admin', 'true');
       loadAllDashboardData();
     } catch (e) {
       console.error('Falha na autenticação do admin:', e);
@@ -153,16 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const recentTable = document.getElementById('recent-visits-table-body');
     if (recentTable) {
       if (recents.length === 0) {
-        recentTable.innerHTML = `<tr><td colspan="3" class="py-6 text-center text-slate-400">Nenhum acesso registrado ainda.</td></tr>`;
+        recentTable.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-400">Nenhum acesso registrado ainda.</td></tr>`;
       } else {
         recentTable.innerHTML = recents.map(r => {
           const dateStr = new Date(r.timestamp).toLocaleString('pt-BR', {
             day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'
           });
+          const loc = r.location || 'Brasil';
           return `
             <tr class="hover:bg-slate-50 transition">
               <td class="py-3 px-4 font-mono text-slate-500">${dateStr}</td>
               <td class="py-3 px-4 font-semibold text-slate-800">${r.path}</td>
+              <td class="py-3 px-4 text-slate-700 font-medium">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-semibold border border-slate-200">
+                  <i class="fas fa-map-marker-alt text-amber-500 text-[10px]"></i>
+                  ${loc}
+                </span>
+              </td>
               <td class="py-3 px-4 text-slate-600">${r.device}</td>
             </tr>
           `;

@@ -558,7 +558,7 @@ const db = {
   },
 
   // Contador e Estatísticas de Visitas em Tempo Real
-  recordVisit({ path, userAgent, ip }) {
+  recordVisit({ path, userAgent, ip, location, city, state, country }) {
     const data = loadData();
     if (!data.analytics) {
       data.analytics = {
@@ -584,11 +584,22 @@ const db = {
     const isMobile = /mobile|iphone|android|ipad/i.test(userAgent || '');
     const device = isMobile ? '📱 Celular' : '💻 Computador';
 
+    // Format location (Cidade, Estado, País)
+    let finalLocation = location;
+    if (!finalLocation || typeof finalLocation !== 'string' || finalLocation.trim() === '') {
+      const parts = [];
+      if (city && city.trim()) parts.push(city.trim());
+      if (state && state.trim()) parts.push(state.trim());
+      if (country && country.trim()) parts.push(country.trim());
+      finalLocation = parts.length > 0 ? parts.join(', ') : 'Brasil';
+    }
+
     if (!data.analytics.recentVisits) data.analytics.recentVisits = [];
     data.analytics.recentVisits.unshift({
       path: cleanPath,
       timestamp: now,
-      device
+      device,
+      location: finalLocation
     });
 
     if (data.analytics.recentVisits.length > 50) {
