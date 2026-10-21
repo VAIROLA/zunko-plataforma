@@ -112,6 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPortfolio();
     loadLeads();
     loadPaymentSettings();
+
+    // Auto-refresh métricas e visitas em tempo real a cada 10 segundos
+    if (!window.__zunkoMetricsInterval) {
+      window.__zunkoMetricsInterval = setInterval(() => {
+        loadMetrics();
+      }, 10000);
+    }
   }
 
   // 1. METRICS & VISITS

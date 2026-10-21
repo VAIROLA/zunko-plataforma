@@ -292,31 +292,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initDynamicContent();
 
-  // 5. Contador de Visitas em Tempo Real (ignora o administrador e o painel /admin)
-  const isAdmin = 
-    window.location.pathname.startsWith('/admin') ||
-    localStorage.getItem('zunko_is_admin') === 'true' ||
-    sessionStorage.getItem('zunko_admin_token') ||
-    sessionStorage.getItem('zunko_admin_auth') === 'true' ||
-    document.cookie.includes('zunko_admin_token');
-
-  if (!isAdmin) {
-    (async function trackRealVisitor() {
+  // 5. Contador de Visitas em Tempo Real (registra acessos a todas as páginas públicas)
+  if (!window.location.pathname.startsWith('/admin')) {
+    (function trackRealVisitor() {
       try {
         let geo = { location: 'Brasil', city: '', state: '', country: 'Brasil' };
-        
-        // Cache location in sessionStorage to avoid repeated third-party requests
         const cachedGeo = sessionStorage.getItem('zunko_geo_loc');
         if (cachedGeo) {
           try { geo = JSON.parse(cachedGeo); } catch (e) {}
-        } else {
-          try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000);
-            const res = await fetch('https://ipwho.is/', { signal: controller.signal });
-            clearTimeout(timeoutId);
-            if (res.ok) {
-              const data = await res.json();
+        }
+
+        // Envio imediato da visita para garantir que seja computada na hora
+        fetch('/api/track-visit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true,
+          body: JSON.stringify({
+            path: window.location.pathname || '/',
+            location: geo.location || 'Brasil',
+            city: geo.city || '',
+            state: geo.state || '',
+            country: geo.country || 'Brasil'
+          })
+        }).catch(() => {});
+
+        // Se ainda não temos a localização em cache, busca em background para os próximos acessos
+        if (!cachedGeo) {
+          fetch('https://ipwho.is/')
+            .then(res => res.json())
+            .then(data => {
               if (data && data.success) {
                 const city = data.city || '';
                 const state = data.region_code || data.region || '';
@@ -325,29 +329,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (city) parts.push(city);
                 if (state) parts.push(state);
                 if (country) parts.push(country);
-                geo = {
+                const updatedGeo = {
                   location: parts.length > 0 ? parts.join(', ') : 'Brasil',
                   city,
                   state,
                   country
                 };
-                sessionStorage.setItem('zunko_geo_loc', JSON.stringify(geo));
+                sessionStorage.setItem('zunko_geo_loc', JSON.stringify(updatedGeo));
               }
-            }
-          } catch (geoErr) {}
+            })
+            .catch(() => {});
         }
-
-        await fetch('/api/track-visit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            path: window.location.pathname,
-            location: geo.location,
-            city: geo.city,
-            state: geo.state,
-            country: geo.country
-          })
-        });
       } catch (e) {}
     })();
   }

@@ -342,18 +342,51 @@
     "updatedAt": "2026-10-18T19:47:48.139Z"
   },
   "analytics": {
-    "totalVisits": 1,
+    "totalVisits": 6,
     "dailyVisits": {
-      "2026-10-18": 1
+      "2026-10-18": 1,
+      "2026-10-21": 5
     },
     "pages": {
-      "/": 1
+      "/": 5,
+      "/planos/essencial": 1
     },
     "recentVisits": [
       {
         "path": "/",
+        "timestamp": "2026-10-21T16:00:10.697Z",
+        "device": "📱 Celular",
+        "location": "Rio de Janeiro, RJ, Brasil"
+      },
+      {
+        "path": "/",
+        "timestamp": "2026-10-21T15:58:37.905Z",
+        "device": "📱 Celular",
+        "location": "Rio de Janeiro, RJ, Brasil"
+      },
+      {
+        "path": "/",
+        "timestamp": "2026-10-21T15:46:50.013Z",
+        "device": "📱 Celular",
+        "location": "Rio de Janeiro, RJ, Brasil"
+      },
+      {
+        "path": "/planos/essencial",
+        "timestamp": "2026-10-21T15:46:17.548Z",
+        "device": "📱 Celular",
+        "location": "Rio de Janeiro, RJ, Brasil"
+      },
+      {
+        "path": "/",
+        "timestamp": "2026-10-21T15:46:13.220Z",
+        "device": "📱 Celular",
+        "location": "Rio de Janeiro, RJ, Brasil"
+      },
+      {
+        "path": "/",
         "timestamp": "2026-10-18T23:39:07.900Z",
-        "device": "💻 Computador"
+        "device": "💻 Computador",
+        "location": "Brasil"
       }
     ]
   }

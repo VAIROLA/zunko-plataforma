@@ -307,21 +307,30 @@ app.post('/api/contact', (req, res) => {
   }
 });
 
-// Visitor Tracking Endpoint (Public, silent - ignores admin)
+// Visitor Tracking Endpoint (Public, silent)
 app.post('/api/track-visit', (req, res) => {
   try {
-    // Do NOT track visits from logged in admin
-    const session = getSessionFromReq(req);
-    if (session) {
-      return res.json({ success: true, ignored: true, reason: 'admin_session' });
-    }
-
     const { path, location, city, state, country } = req.body || {};
     if (path && !path.startsWith('/admin')) {
       const userAgent = req.headers['user-agent'] || '';
       const forwarded = req.headers['x-forwarded-for'];
       const ip = (typeof forwarded === 'string' ? forwarded.split(',')[0].trim() : '') || req.ip || req.connection?.remoteAddress || '';
-      db.recordVisit({ path, userAgent, ip, location, city, state, country });
+      
+      let finalCountry = country || 'Brasil';
+      const cfCountry = req.headers['cf-ipcountry'];
+      if (cfCountry && (cfCountry === 'BR' || cfCountry === 'Brazil')) {
+        finalCountry = 'Brasil';
+      }
+
+      db.recordVisit({ 
+        path, 
+        userAgent, 
+        ip, 
+        location: location || finalCountry, 
+        city, 
+        state, 
+        country: finalCountry 
+      });
     }
     res.json({ success: true });
   } catch (err) {
