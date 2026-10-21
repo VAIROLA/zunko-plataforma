@@ -500,4 +500,10 @@ app.delete('/api/admin/portfolio/:id', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Plataforma ZUNKO ativa e operando em http://localhost:${PORT}`);
+
+  // Keep-Alive Self-Ping para manter a ZUNKO sempre acordada no Render
+  const https = require('https');
+  setInterval(() => {
+    https.get('https://zunkosites.onrender.com/api/plans', () => {}).on('error', () => {});
+  }, 10 * 60 * 1000); // ping a cada 10 minutos para não dormir
 });
