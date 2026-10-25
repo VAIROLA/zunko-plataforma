@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Fotográfico & Galeria - Arthur Valente | Ator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .gallery-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: #000;
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="actor-logo">
+        <span class="actor-name">ARTHUR VALENTE</span>
+        <span class="actor-sub">Ator • TV • Cinema • Teatro</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="atuacoes-videos.html">Vídeos & Cenas</a></li>
+        <li><a href="galeria-book.html" class="active">Book de Fotos</a></li>
+        <li><a href="curriculo-contato.html">Currículo & Contato</a></li>
+      </ul>
+
+      <a href="curriculo-contato.html#contato" class="btn-casting-nav">Agendar Casting</a>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section style="background: radial-gradient(circle at center, #1b160f 0%, #08090c 100%); padding: 50px 20px 35px; text-align: center; border-bottom: 1px solid var(--border);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="section-tag">Ensaio Fotográfico Oficial</div>
+      <h1 class="section-title">Book Fotográfico & Caracterizações</h1>
+      <p class="section-desc">Retratos profissionais, expressões cênicas, figurinos de época e registros de palco em alta resolução.</p>
+    </div>
+  </section>
+
+  <!-- Filtros da Galeria -->
+  <main class="section">
+    <div class="gallery-filter-bar">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">🖼️ Todas as Fotos (20+)</button>
+      <button class="filter-btn" onclick="filterGallery('headshot', this)">👤 Headshots & Retratos</button>
+      <button class="filter-btn" onclick="filterGallery('personagem', this)">🎭 Personagens & Caracterizações</button>
+      <button class="filter-btn" onclick="filterGallery('cinema', this)">🎬 Cinema & Televisão</button>
+      <button class="filter-btn" onclick="filterGallery('teatro', this)">🎪 Palco & Teatro</button>
+      <button class="filter-btn" onclick="filterGallery('pb', this)">🎞️ Ensaios Preto e Branco</button>
+    </div>
+
+    <!-- Grade RICA de Fotos (Muitas fotos com Lightbox) -->
+    <div class="photo-gallery-grid" id="full-photo-grid">
+
+      <!-- ================= HEADSHOTS ================= -->
+      <div class="photo-card" data-cat="headshot" onclick="openLightbox('👤', 'Headshot Oficial Frontal', 'Headshot', 'Foto neutra de rosto em alta definição para cadastro em agências de elenco.')">
+        <div class="photo-placeholder">👤</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Headshot Neutro</div>
+          <div class="photo-title">Retrato Frontal</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="headshot" onclick="openLightbox('🙂', 'Headshot Comercial Sorrindo', 'Headshot Comercial', 'Expressão simpática e aberta ideal para campanhas de publicidade e TV.')">
+        <div class="photo-placeholder">🙂</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Comercial</div>
+          <div class="photo-title">Expressão Aberta</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="headshot" onclick="openLightbox('📐', 'Perfil 3/4 com Luz Lateral', 'Headshot Perfil', 'Iluminação dramática marcando traços angulares e maxilar.')">
+        <div class="photo-placeholder">📐</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Estúdio</div>
+          <div class="photo-title">Perfil Três Quartos</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="headshot" onclick="openLightbox('🧐', 'Expressão Séria & Introspectiva', 'Drama', 'Foco no olhar intenso para papéis psicológicos e complexos.')">
+        <div class="photo-placeholder">🧐</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Introspectivo</div>
+          <div class="photo-title">Olhar Dramático</div>
+        </div>
+      </div>
+
+      <!-- ================= PERSONAGENS ================= -->
+      <div class="photo-card" data-cat="personagem" onclick="openLightbox('🎩', 'Figurino Histórico: O Barão do Café', 'Época / Século XIX', 'Figurino completo com casaca de veludo, gravata borboleta e costeletas.')">
+        <div class="photo-placeholder">🎩</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Época (1880)</div>
+          <div class="photo-title">O Barão do Café</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="personagem" onclick="openLightbox('🥼', 'Médico Cirurgião em Plantão', 'Contemporâneo', 'Jaleco branco, postura séria e olhar técnico para drama hospitalar.')">
+        <div class="photo-placeholder">🥼</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Série Médica</div>
+          <div class="photo-title">Dr. Ricardo Lemos</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="personagem" onclick="openLightbox('😈', 'Vilão Cínico & Elegante', 'Antagonista', 'Terno preto alinhado, sorriso contido e olhar misterioso.')">
+        <div class="photo-placeholder">😈</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Antagonista</div>
+          <div class="photo-title">O Vilão Elegante</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="personagem" onclick="openLightbox('🌾', 'Camponês / Homem da Terra', 'Regional', 'Camisa xadrez gasta pelo sol, chapéu de palha e semblante resistente.')">
+        <div class="photo-placeholder">🌾</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Regional</div>
+          <div class="photo-title">Homem do Campo</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="personagem" onclick="openLightbox('🕵️', 'Detetive Particular / Anos 50', 'Noir', 'Sobretudo clássico, fumaça cênica e atmosfera de mistério investigativo.')">
+        <div class="photo-placeholder">🕵️</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Cinema Noir</div>
+          <div class="photo-title">Detetive Investigador</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="personagem" onclick="openLightbox('🎸', 'Músico Boêmio Noturno', 'Urbano / Boêmio', 'Jaqueta de couro, violão nas costas e expressão descontraída.')">
+        <div class="photo-placeholder">🎸</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Urbano</div>
+          <div class="photo-title">O Músico de Bar</div>
+        </div>
+      </div>
+
+      <!-- ================= CINEMA & TV ================= -->
+      <div class="photo-card" data-cat="cinema" onclick="openLightbox('🎬', 'Bastidores no Set de Gravação', 'Making Of', 'Direção de atores com claquete e câmera de cinema em estúdio.')">
+        <div class="photo-placeholder">🎬</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Set de Cinema</div>
+          <div class="photo-title">Bastidores em Cena</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="cinema" onclick="openLightbox('📺', 'Gravação Externa de Novela', 'TV / Externa', 'Cena gravada na praia com luz natural ao entardecer.')">
+        <div class="photo-placeholder">📺</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Gravação Externa</div>
+          <div class="photo-title">Cena na Praia (Novela)</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="cinema" onclick="openLightbox('🎥', 'Plano Close-up Cinematográfico', 'Cinema 4K', 'Lente 85mm com fundo desfocado e foco cravado no olhar.')">
+        <div class="photo-placeholder">🎥</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Close-Up</div>
+          <div class="photo-title">Cena de Alta Tensão</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="cinema" onclick="openLightbox('🎙️', 'Sala de Leitura de Mesa', 'Pré-produção', 'Elenco reunido com o diretor para leitura dinâmica do roteiro.')">
+        <div class="photo-placeholder">🎙️</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Preparação</div>
+          <div class="photo-title">Leitura de Roteiro</div>
+        </div>
+      </div>
+
+      <!-- ================= TEATRO ================= -->
+      <div class="photo-card" data-cat="teatro" onclick="openLightbox('👑', 'Hamlet - Palco Italiano', 'Teatro Clássico', 'Momento culminante do espetáculo sob holofote zenital branco.')">
+        <div class="photo-placeholder">👑</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Palco Italiano</div>
+          <div class="photo-title">Ser ou Não Ser</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="teatro" onclick="openLightbox('🕯️', 'Cena com Iluminação de Velas', 'Teatro Contemporâneo', 'Composição cênica intimista em peça experimental.')">
+        <div class="photo-placeholder">🕯️</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Contemporâneo</div>
+          <div class="photo-title">Penumbra Cênica</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="teatro" onclick="openLightbox('🎭', 'Agradecimento Final com a Plateia', 'Cortina Fechada', 'Elenco de mãos dadas sendo ovacionado pelo público de pé.')">
+        <div class="photo-placeholder">👏</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Aplausos</div>
+          <div class="photo-title">Ovacionado pelo Público</div>
+        </div>
+      </div>
+
+      <!-- ================= PRETO E BRANCO ================= -->
+      <div class="photo-card" data-cat="pb" onclick="openLightbox('🎞️', 'Retrato P&B - Luz Rembrandt', 'Preto & Branco', 'Fotografia clássica com triângulo de luz suave na face.')">
+        <div class="photo-placeholder">🎞️</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Preto & Branco</div>
+          <div class="photo-title">Luz Rembrandt</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="pb" onclick="openLightbox('⚫', 'Silhueta e Contorno Cênico', 'P&B Artístico', 'Estudo corporal e sombra projetada em fundo infinito.')">
+        <div class="photo-placeholder">⚫</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Silhueta P&B</div>
+          <div class="photo-title">Contraste Alto</div>
+        </div>
+      </div>
+
+      <div class="photo-card" data-cat="pb" onclick="openLightbox('📸', 'Retrato Close Médio P&B', 'Editorial', 'Ensaio fotográfico para capa de revista cultural.')">
+        <div class="photo-placeholder">📸</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Editorial P&B</div>
+          <div class="photo-title">Retrato de Capa</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <div class="actor-name" style="font-size: 1.3rem;">ARTHUR VALENTE</div>
+        <div class="actor-sub">DRT: 45.892/RJ • Ator Profissional</div>
+      </div>
+      <div>
+        <span style="color: var(--text-muted); font-size: 0.85rem;">Agenciamento:</span>
+        <div style="color: var(--primary); font-weight: bold;">Talentos & Cinema Produções</div>
+      </div>
+      <div>
+        <span style="color: var(--text-muted); font-size: 0.85rem;">WhatsApp para Casting:</span>
+        <div style="color: #25d366; font-weight: bold;">(21) 99999-9999</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Arthur Valente - Todos os direitos reservados. Modelo Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="btn-close-lightbox" onclick="closeLightbox()">✕</button>
+      <div id="lightbox-img-box" class="lightbox-img-box">👤</div>
+      <div class="lightbox-details">
+        <div id="lightbox-cat" style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;"></div>
+        <h3 id="lightbox-title" style="color: #fff; font-size: 1.4rem; margin: 6px 0;"></h3>
+        <p id="lightbox-desc" style="color: var(--text-muted); font-size: 0.95rem;"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    function filterGallery(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('#full-photo-grid .photo-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-cat') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encomendas & Delivery - Brasa & Petisco</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Status -->
+  <div class="top-status-bar">
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span>ENTREGAS NOTURNAS DAS 19:00 ÀS 00:00</span>
+    </div>
+    <span style="color: #64748b;">|</span>
+    <span>🎉 Encomendas para Festas com Desconto Especial</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-wrap">
+        <div class="logo-badge">🍢</div>
+        <div>
+          <div class="logo-title">BRASA <span>& PETISCO</span></div>
+          <div class="logo-tag">Espetaria, Petiscos & Bar</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cardapio.html">Cardápio Completo</a></li>
+        <li><a href="encomendas.html" class="active">Encomendas & Delivery</a></li>
+        <li><a href="contato.html">Horários & Contato</a></li>
+      </ul>
+
+      <button class="nav-cart-btn" onclick="toggleCart()">
+        🛒 Meu Pedido (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Encomendas -->
+  <section style="background: linear-gradient(135deg, #1c130d 0%, #0f1115 100%); padding: 50px 20px; text-align: center; border-bottom: 1px solid var(--border);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <span class="hero-tag">🛵 Delivery Ágil & Encomendas de Festas</span>
+      <h1 style="font-size: 2.5rem; color: #fff; margin-bottom: 15px;">Sua Festa ou Seu Jantar com Sabor de Boteco de Verdade!</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Entregamos quentinho na sua porta todos os dias das 19:00 às 00:00 (exceto segundas) ou montamos o kit perfeito para sua confraternização.</p>
+    </div>
+  </section>
+
+  <!-- Como Funciona o Delivery -->
+  <section style="max-width: 1200px; margin: 50px auto; padding: 0 20px;">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Como Funciona Nosso Delivery Noturno</h2>
+      <p class="section-sub">Praticidade, embalagem térmica e sabor na brasa sem sair do sofá</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <h3>Horário de Funcionamento</h3>
+        <p>De terça a domingo, das <strong>19:00 às 00:00</strong>. Ideal para o lanche da noite, futebol com amigos ou happy hour.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🥡</div>
+        <h3>Embalagens Térmicas</h3>
+        <p>Nossos espetinhos e petiscos viajam em embalagens térmicas seladas para chegarem estalando de quentes e crocantes.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💳</div>
+        <h3>Pagamento Fácil</h3>
+        <p>Aceitamos PIX, Cartão de Crédito e Débito no ato da entrega (levamos a maquininha até você) e Dinheiro.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Região de Atendimento</h3>
+        <p>Atendemos toda a região central e bairros vizinhos com taxa de entrega justa e tempo médio de 35 a 50 minutos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pacotes para Festas & Eventos -->
+  <section style="background: #151821; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🎉 Kits de Encomenda para Festas</h2>
+        <p class="section-sub">Economize tempo e trabalho! Nós preparamos tudo para o seu evento</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
+        
+        <!-- Pacote 1 -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 30px; display: flex; flex-direction: column;">
+          <span style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase;">Para 5 a 8 Pessoas</span>
+          <h3 style="font-size: 1.5rem; margin: 8px 0 14px; color: #fff;">Combo Galera</h3>
+          <ul style="list-style: none; margin-bottom: 25px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+            <li>🍢 <strong>20 Espetos Variados</strong> (Carne, Frango c/ Bacon, Toscana)</li>
+            <li>🍟 <strong>1 Travessa Grande de Batata Turbinada</strong> (Cheddar & Bacon)</li>
+            <li>🥖 <strong>4 Pães de Alho</strong> quentinhos</li>
+            <li>🥣 Acompanha potes de farofa e vinagrete especial</li>
+          </ul>
+          <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.8rem; color: #64748b; display: block;">Valor Especial:</span>
+              <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">R$ 220,00</span>
+            </div>
+            <a href="https://wa.me/5521999999999?text=Ol%C3%A1!%20Gostaria%20de%20encomendar%20o%20Combo%20Galera." target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Encomendar</a>
+          </div>
+        </div>
+
+        <!-- Pacote 2 -->
+        <div style="background: var(--bg-card); border: 2px solid var(--primary); border-radius: 14px; padding: 30px; display: flex; flex-direction: column; position: relative;">
+          <div style="position: absolute; top: -12px; right: 20px; background: var(--primary); color: #000; font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 12px; text-transform: uppercase;">Mais Pedido</div>
+          <span style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase;">Para 12 a 15 Pessoas</span>
+          <h3 style="font-size: 1.5rem; margin: 8px 0 14px; color: #fff;">Churrascada Completa</h3>
+          <ul style="list-style: none; margin-bottom: 25px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+            <li>🍢 <strong>50 Espetos Variados</strong> (Alcatra, Frango, Queijo Coalho, Coração, Toscana)</li>
+            <li>🐟 <strong>1 Travessa Especial de Sardinha Frita</strong> (com limão)</li>
+            <li>🍟 <strong>1 Travessa de Batata Turbinada</strong> (Cheddar & Bacon)</li>
+            <li>🥟 <strong>20 Pasteizinhos Variados</strong> sequinhos</li>
+            <li>🥣 Farofa artesanal, vinagrete e molhos da casa</li>
+          </ul>
+          <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.8rem; color: #64748b; display: block;">Valor Especial:</span>
+              <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">R$ 490,00</span>
+            </div>
+            <a href="https://wa.me/5521999999999?text=Ol%C3%A1!%20Gostaria%20de%20encomendar%20a%20Churrascada%20Completa." target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Encomendar</a>
+          </div>
+        </div>
+
+        <!-- Pacote 3 -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 30px; display: flex; flex-direction: column;">
+          <span style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase;">Festas Grandes & Eventos</span>
+          <h3 style="font-size: 1.5rem; margin: 8px 0 14px; color: #fff;">Kit Personalizado</h3>
+          <ul style="list-style: none; margin-bottom: 25px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+            <li>🍢 Encomenda de <strong>100 a 500 espetos</strong></li>
+            <li>🥩 Opção de espetos <strong>já assados</strong> ou <strong>crus marinados</strong> para você assar na sua churrasqueira</li>
+            <li>🍺 Fardos de cerveja e refrigerantes consignados ou no gelo</li>
+            <li>📋 Orçamento personalizado conforme seu evento</li>
+          </ul>
+          <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.8rem; color: #64748b; display: block;">Sob Consulta:</span>
+              <span style="font-size: 1.3rem; font-weight: 800; color: #fff;">Orçamento VIP</span>
+            </div>
+            <a href="https://wa.me/5521999999999?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20evento%20grande." target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">Falar no Zap</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Dúvidas sobre Encomendas -->
+  <section style="max-width: 900px; margin: 60px auto; padding: 0 20px;">
+    <h3 style="font-size: 1.6rem; margin-bottom: 25px; text-align: center;">Perguntas Frequentes sobre Encomendas</h3>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 14px;">
+      <h4 style="color: var(--primary); margin-bottom: 6px;">Com quanto tempo de antecedência devo encomendar?</h4>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Para pedidos normais de delivery na noite, pode pedir na hora pelo cardápio! Para kits de festas (acima de 30 espetos), pedimos que faça o pedido com pelo menos <strong>24 horas de antecedência</strong> para prepararmos os melhores cortes frescos.</p>
+    </div>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 14px;">
+      <h4 style="color: var(--primary); margin-bottom: 6px;">Vocês vendem os espetinhos crus para eu assar em casa?</h4>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Sim! Se você tiver churrasqueiro na sua festa e preferir assar por conta própria, fornecemos os espetinhos no ponto de ir para o fogo: já temperados e embalados a vácuo com preço especial.</p>
+    </div>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
+      <h4 style="color: var(--primary); margin-bottom: 6px;">Vocês entregam as cervejas geladas?</h4>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Com certeza! Todas as bebidas saem da nossa câmara fria estalando de geladas, prontas para beber.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo-title" style="margin-bottom: 10px;">BRASA <span>& PETISCO</span></div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Espetaria, Petiscos & Bar Delivery.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="cardapio.html">Cardápio & Pedidos</a></li>
+          <li><a href="encomendas.html">Encomendas para Festas</a></li>
+          <li><a href="contato.html">Horários & Localização</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horários</h4>
+        <p style="color: var(--primary); font-weight: 800;">19:00 às 00:00</p>
+        <p style="font-size: 0.8rem; color: #64748b;">Terça a Domingo</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>WhatsApp de Encomendas</h4>
+        <p style="font-size: 1.1rem; color: #25d366; font-weight: 800;">📱 (21) 99999-9999</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Brasa & Petisco Delivery - Todos os direitos reservados. Modelo Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Carrinho -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>🛒 Meu Pedido</h3>
+        <button class="btn-close-cart" onclick="toggleCart()">✕</button>
+      </div>
+      <div id="cart-items-container" class="cart-items-list"></div>
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span id="cart-total-val">R$ 0,00</span>
+        </div>
+        <div class="cart-inputs">
+          <input type="text" id="client-name" class="cart-input" placeholder="Seu Nome Completo">
+          <input type="text" id="client-address" class="cart-input" placeholder="Endereço de Entrega ou 'Retirar'">
+          <select id="client-payment" class="cart-input">
+            <option value="PIX">Forma de Pagamento: PIX</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Cartão de Débito">Cartão de Débito</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+        </div>
+        <button class="btn-checkout-whatsapp" onclick="sendWhatsAppOrder()">
+          <span>📱 Enviar Pedido pelo WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>

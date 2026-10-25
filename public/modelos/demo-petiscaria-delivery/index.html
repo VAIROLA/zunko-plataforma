@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brasa & Petisco - Churrasquinho, Petiscos & Bar Delivery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Barra de Status de Funcionamento -->
+  <div class="top-status-bar">
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span>ABERTO HOJE DAS 19:00 ÀS 00:00</span>
+    </div>
+    <span style="color: #64748b;">|</span>
+    <span>🛵 Entregas Rápidas & Encomendas para Festas</span>
+  </div>
+
+  <!-- Header / Navegação -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-wrap">
+        <div class="logo-badge">🍢</div>
+        <div>
+          <div class="logo-title">BRASA <span>& PETISCO</span></div>
+          <div class="logo-tag">Espetaria, Petiscos & Bar</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Início</a></li>
+        <li><a href="cardapio.html">Cardápio Completo</a></li>
+        <li><a href="encomendas.html">Encomendas & Delivery</a></li>
+        <li><a href="contato.html">Horários & Contato</a></li>
+      </ul>
+
+      <button class="nav-cart-btn" onclick="toggleCart()">
+        🛒 Meu Pedido (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">🔥 O Melhor Churrasco e Petisco da Região</span>
+      <h1>Churrasquinho na Brasa, Petiscos Crocantes & Cerveja Estupidamente Gelada!</h1>
+      <p>Sardinha frita crocante, batata turbinada com cheddar e bacon, espetos variados e bebidas em dose ou garrafa. Entregamos quentinho na sua casa das 19h às 00h!</p>
+      <div class="hero-btns">
+        <a href="cardapio.html" class="btn btn-primary">📖 Ver Cardápio & Preços</a>
+        <a href="encomendas.html" class="btn btn-secondary">📦 Fazer Encomenda</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Destaques / Vantagens -->
+  <section class="features-section">
+    <div class="feature-card">
+      <div class="feature-icon">🍢</div>
+      <h3>Churrasco de Primeira</h3>
+      <p>Carnes selecionadas, frango com bacon, queijo coalho e pão de alho assados no ponto perfeito do carvão.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🐟</div>
+      <h3>Sardinha Frita & Petiscos</h3>
+      <p>Sardinha fresquinha empanada na hora, batata frita turbinada e pasteizinhos crocantes sequinhos.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🍺</div>
+      <h3>Bebidas Geladíssimas & Doses</h3>
+      <p>Cervejas no grau, refrigerantes e doses de cachaça artesanal, whisky e batidas tropicais.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🛵</div>
+      <h3>Delivery Noturno Ágil</h3>
+      <p>Funcionamento de terça a domingo das 19h às 00h. Peça pelo site e receba direto no WhatsApp!</p>
+    </div>
+  </section>
+
+  <!-- Seção Os Mais Pedidos -->
+  <section class="menu-section">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Campeões de Pedidos</h2>
+      <p class="section-sub">Os queridinhos dos nossos clientes para acompanhar aquela cerveja trincando</p>
+    </div>
+
+    <div class="products-grid">
+      <!-- Item Carro Chefe: Jantinha Completa -->
+      <div class="product-card" style="border: 2px solid var(--primary); grid-column: span 1;">
+        <div class="product-img-box">
+          🍱
+          <span class="product-badge" style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: #000; font-weight: 800;">⭐ CARRO CHEFE</span>
+        </div>
+        <div class="product-info">
+          <div class="product-title" style="color: var(--primary);">Jantinha Completa da Brasa</div>
+          <div class="product-desc">O prato mais pedido da casa! 1 Espetinho suculento à sua escolha na brasa + arroz branco soltinho + vinagrete fresco + farofa crocante + salpicão cremoso especial de frango. Refeição completa e caprichada!</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 25,00</span>
+            <button class="btn-add-cart" style="background: var(--primary); color: #000; font-weight: 800;" onclick="addToCart('jantinha-completa', 'Jantinha Completa (Espeto + Arroz + Vinagrete + Farofa + Salpicão)', 25.00)">+ Pedir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 1 -->
+      <div class="product-card">
+        <div class="product-img-box">
+          🐟
+          <span class="product-badge">Sucesso</span>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Sardinha Frita Crocante</div>
+          <div class="product-desc">Porção generosa de sardinhas limpas, empanadas e fritas na hora. Acompanha limão fatiado e farofa temperada da casa.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 28,00</span>
+            <button class="btn-add-cart" onclick="addToCart('sardinha-frita', 'Sardinha Frita Crocante', 28.00)">+ Pedir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="product-card">
+        <div class="product-img-box">
+          🍟
+          <span class="product-badge">Top 1</span>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Batata Turbinada Especial</div>
+          <div class="product-desc">Batata frita crocante coberta com muito queijo cheddar cremoso, pedaços generosos de bacon crocante e cebolinha verde.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 32,00</span>
+            <button class="btn-add-cart" onclick="addToCart('batata-turbinada', 'Batata Turbinada Especial', 32.00)">+ Pedir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="product-card">
+        <div class="product-img-box">
+          🍢
+          <span class="product-badge">Na Brasa</span>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Espeto de Alcatra Nobre</div>
+          <div class="product-desc">Carne bovina macia, suculenta, assada na brasa de carvão. Acompanha farofa crocante e molho vinagrete artesanal.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 12,00</span>
+            <button class="btn-add-cart" onclick="addToCart('espeto-alcatra', 'Espeto de Alcatra Nobre', 12.00)">+ Pedir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="product-card">
+        <div class="product-img-box">
+          🥟
+          <span class="product-badge">Crocante</span>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Pasteizinhos Variados (10 un)</div>
+          <div class="product-desc">Porção com 10 mini pastéis crocantes e sequinhos nos sabores carne de primeira, queijo muçarela e frango com catupiry.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 26,00</span>
+            <button class="btn-add-cart" onclick="addToCart('pasteizinhos-10', 'Pasteizinhos Variados (10 un)', 26.00)">+ Pedir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 35px;">
+      <a href="cardapio.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 14px 30px;">👉 Ver Todas as Opções e Bebidas</a>
+    </div>
+  </section>
+
+  <!-- Banner Encomendas para Festas -->
+  <section style="background: linear-gradient(135deg, #1e293b, #0f172a); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 50px 20px; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.9rem;">🎉 Vai Fazer Aniversário ou Churrasco com Amigos?</span>
+      <h2 style="font-size: 2.2rem; margin: 12px 0 16px; color: #fff;">Aceitamos Encomendas para Festas & Eventos!</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Fornecemos espetos prontos assados ou crus temperados, travessas de petiscos montadas e bebidas com preço especial para quantidade.</p>
+      <a href="encomendas.html" class="btn btn-secondary">📋 Ver Pacotes de Encomenda</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo-title" style="margin-bottom: 10px;">BRASA <span>& PETISCO</span></div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">O melhor churrasquinho e petiscaria da cidade. Feito com amor, sabor na brasa e entregue rápido na sua porta.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="cardapio.html">Cardápio & Pedidos</a></li>
+          <li><a href="encomendas.html">Encomendas para Festas</a></li>
+          <li><a href="contato.html">Horários & Localização</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horário de Atendimento</h4>
+        <p style="color: var(--text-main); font-weight: 600;">Terça a Domingo</p>
+        <p style="color: var(--primary); font-size: 1.1rem; font-weight: 800;">19:00 às 00:00</p>
+        <p style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">Segundas-feiras: Fechado para descanso</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Pedidos & WhatsApp</h4>
+        <p style="font-size: 1.1rem; color: #25d366; font-weight: 800;">📱 (21) 99999-9999</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Entregamos na sua casa ou retire no balcão!</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Brasa & Petisco Delivery - Todos os direitos reservados. Modelo Demonstrativo Criado para Clientes.</p>
+    </div>
+  </footer>
+
+  <!-- Drawer do Carrinho -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>🛒 Meu Pedido</h3>
+        <button class="btn-close-cart" onclick="toggleCart()">✕</button>
+      </div>
+
+      <div id="cart-items-container" class="cart-items-list">
+        <!-- Renderizado dinamicamente pelo cart.js -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span id="cart-total-val">R$ 0,00</span>
+        </div>
+
+        <div class="cart-inputs">
+          <input type="text" id="client-name" class="cart-input" placeholder="Seu Nome Completo">
+          <input type="text" id="client-address" class="cart-input" placeholder="Rua, Número, Bairro (ou 'Vou retirar')">
+          <select id="client-payment" class="cart-input">
+            <option value="PIX">Forma de Pagamento: PIX (Chave na Entrega)</option>
+            <option value="Cartão de Crédito">Cartão de Crédito (Máquina)</option>
+            <option value="Cartão de Débito">Cartão de Débito (Máquina)</option>
+            <option value="Dinheiro">Dinheiro (Informe troco)</option>
+          </select>
+        </div>
+
+        <button class="btn-checkout-whatsapp" onclick="sendWhatsAppOrder()">
+          <span>📱 Enviar Pedido pelo WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>

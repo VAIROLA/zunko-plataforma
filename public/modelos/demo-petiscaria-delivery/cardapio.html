@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio Completo - Brasa & Petisco Delivery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Status -->
+  <div class="top-status-bar">
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span>ABERTO HOJE DAS 19:00 ÀS 00:00</span>
+    </div>
+    <span style="color: #64748b;">|</span>
+    <span>⚡ Pedidos Rápidos via WhatsApp</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-wrap">
+        <div class="logo-badge">🍢</div>
+        <div>
+          <div class="logo-title">BRASA <span>& PETISCO</span></div>
+          <div class="logo-tag">Espetaria, Petiscos & Bar</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cardapio.html" class="active">Cardápio Completo</a></li>
+        <li><a href="encomendas.html">Encomendas & Delivery</a></li>
+        <li><a href="contato.html">Horários & Contato</a></li>
+      </ul>
+
+      <button class="nav-cart-btn" onclick="toggleCart()">
+        🛒 Meu Pedido (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabeçalho do Cardápio -->
+  <section style="background: #12151c; padding: 40px 20px 20px; text-align: center; border-bottom: 1px solid var(--border);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h1 style="font-size: 2.4rem; color: #fff; margin-bottom: 10px;">Cardápio da Brasa & Petiscos</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">Monte seu pedido abaixo e envie direto para o nosso WhatsApp com um clique!</p>
+    </div>
+  </section>
+
+  <!-- Filtros de Categoria -->
+  <main class="menu-section">
+    <div class="category-tabs">
+      <button class="cat-tab active" onclick="filterCategory('all', this)">🍽️ Todos os Itens</button>
+      <button class="cat-tab" onclick="filterCategory('espetos', this)">🍢 Churrasquinhos na Brasa</button>
+      <button class="cat-tab" onclick="filterCategory('petiscos', this)">🍟 Petiscos & Porções</button>
+      <button class="cat-tab" onclick="filterCategory('cervejas', this)">🍺 Cervejas & Refrigerantes</button>
+      <button class="cat-tab" onclick="filterCategory('doses', this)">🥃 Bebidas de Dose & Drinks</button>
+    </div>
+
+    <!-- Grid de Produtos -->
+    <div class="products-grid" id="menu-items-grid">
+
+      <!-- ================= CARRO CHEFE: JANTINHA COMPLETA ================= -->
+      <div class="product-card" data-cat="espetos" style="border: 2px solid var(--primary);">
+        <div class="product-img-box">
+          🍱
+          <span class="product-badge" style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: #000; font-weight: 800;">⭐ CARRO CHEFE</span>
+        </div>
+        <div class="product-info">
+          <div class="product-title" style="color: var(--primary);">Jantinha Completa da Brasa</div>
+          <div class="product-desc">O prato campeão da casa! Acompanha 1 espetinho na brasa à sua escolha + arroz branco soltinho + vinagrete caseiro + farofa crocante + porção generosa de salpicão de frango super cremoso.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 25,00</span>
+            <button class="btn-add-cart" style="background: var(--primary); color: #000; font-weight: 800;" onclick="addToCart('jantinha-completa', 'Jantinha Completa (Espeto + Arroz + Vinagrete + Farofa + Salpicão)', 25.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ESPETOS ================= -->
+      <div class="product-card" data-cat="espetos">
+        <div class="product-img-box">🍢<span class="product-badge">Carvão</span></div>
+        <div class="product-info">
+          <div class="product-title">Espeto de Alcatra Bovina</div>
+          <div class="product-desc">Carne macia e suculenta assada no carvão. Acompanha farofa crocante e vinagrete.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 12,00</span>
+            <button class="btn-add-cart" onclick="addToCart('espeto-alcatra', 'Espeto de Alcatra Bovina', 12.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="espetos">
+        <div class="product-img-box">🥓<span class="product-badge">Top</span></div>
+        <div class="product-info">
+          <div class="product-title">Espeto de Frango com Bacon</div>
+          <div class="product-desc">Cubos suculentos de peito de frango envolvidos em tiras crocantes de bacon defumado.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 12,00</span>
+            <button class="btn-add-cart" onclick="addToCart('espeto-frango-bacon', 'Espeto de Frango com Bacon', 12.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="espetos">
+        <div class="product-img-box">🧀</div>
+        <div class="product-info">
+          <div class="product-title">Queijo Coalho na Brasa com Melaço</div>
+          <div class="product-desc">Queijo coalho tostadinho por fora e derretido por dentro, finalizado com melaço de cana.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 10,00</span>
+            <button class="btn-add-cart" onclick="addToCart('espeto-queijo-coalho', 'Queijo Coalho na Brasa', 10.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="espetos">
+        <div class="product-img-box">❤️</div>
+        <div class="product-info">
+          <div class="product-title">Espeto de Coração de Frango</div>
+          <div class="product-desc">Coraçõezinhos bem temperados no alho e ervas, assados no ponto suculento ideal.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 12,00</span>
+            <button class="btn-add-cart" onclick="addToCart('espeto-coracao', 'Espeto de Coração de Frango', 12.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="espetos">
+        <div class="product-img-box">🌭</div>
+        <div class="product-info">
+          <div class="product-title">Linguiça Toscana Especial</div>
+          <div class="product-desc">Linguiça toscana de pernil suculenta, douradinha na brasa com leve toque de pimenta.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 10,00</span>
+            <button class="btn-add-cart" onclick="addToCart('espeto-linguica', 'Linguiça Toscana Especial', 10.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="espetos">
+        <div class="product-img-box">🥖</div>
+        <div class="product-info">
+          <div class="product-title">Pão de Alho Cremoso</div>
+          <div class="product-desc">Pão francês crocante recheado com pasta de alho artesanal, ervas e queijo derretido.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 8,00</span>
+            <button class="btn-add-cart" onclick="addToCart('pao-alho', 'Pão de Alho Cremoso', 8.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= PETISCOS ================= -->
+      <div class="product-card" data-cat="petiscos">
+        <div class="product-img-box">🐟<span class="product-badge">Especial</span></div>
+        <div class="product-info">
+          <div class="product-title">Sardinha Frita Crocante</div>
+          <div class="product-desc">Sardinhas limpas, empanadas na farinha especial e fritas no ponto sequinho. Acompanha limão e farofa.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 28,00</span>
+            <button class="btn-add-cart" onclick="addToCart('sardinha-frita', 'Sardinha Frita Crocante', 28.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="petiscos">
+        <div class="product-img-box">🍟<span class="product-badge">Top 1</span></div>
+        <div class="product-info">
+          <div class="product-title">Batata Turbinada (Cheddar & Bacon)</div>
+          <div class="product-desc">Porção grande de batatas crocantes cobertas com generoso creme de queijo cheddar e bacon em cubos.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 32,00</span>
+            <button class="btn-add-cart" onclick="addToCart('batata-turbinada', 'Batata Turbinada (Cheddar & Bacon)', 32.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="petiscos">
+        <div class="product-img-box">🥟</div>
+        <div class="product-info">
+          <div class="product-title">Pasteizinhos Variados (10 unidades)</div>
+          <div class="product-desc">10 mini pastéis crocantes com recheios sortidos de carne moída bem temperada, queijo e frango com catupiry.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 26,00</span>
+            <button class="btn-add-cart" onclick="addToCart('pasteizinhos-10', 'Pasteizinhos Variados (10 un)', 26.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="petiscos">
+        <div class="product-img-box">🍖</div>
+        <div class="product-info">
+          <div class="product-title">Torresmo Crocante à Pururuca</div>
+          <div class="product-desc">Pedaços de barriga de porco fritos à perfeição, estalando de crocante. Acompanha gomos de limão.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 25,00</span>
+            <button class="btn-add-cart" onclick="addToCart('torresmo-pururuca', 'Torresmo Crocante à Pururuca', 25.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="petiscos">
+        <div class="product-img-box">🧅</div>
+        <div class="product-info">
+          <div class="product-title">Calabresa Acebolada na Chapa</div>
+          <div class="product-desc">Fatias de calabresa defumada douradas com cebola frita no azeite. Acompanha pão fatiado.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 24,00</span>
+            <button class="btn-add-cart" onclick="addToCart('calabresa-acebolada', 'Calabresa Acebolada na Chapa', 24.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= CERVEJAS & REFRIS ================= -->
+      <div class="product-card" data-cat="cervejas">
+        <div class="product-img-box">🍺<span class="product-badge">Gelada</span></div>
+        <div class="product-info">
+          <div class="product-title">Cerveja Heineken Long Neck (330ml)</div>
+          <div class="product-desc">Cerveja puro malte Premium, servida ou entregue trincando de gelada.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 11,00</span>
+            <button class="btn-add-cart" onclick="addToCart('heineken-ln', 'Cerveja Heineken Long Neck', 11.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="cervejas">
+        <div class="product-img-box">🍻</div>
+        <div class="product-info">
+          <div class="product-title">Cerveja Brahma Duplo Malte Lata (350ml)</div>
+          <div class="product-desc">Cerveja encorpada com o equilíbrio entre malte Pilsen e malte torrado. Bem gelada.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 6,50</span>
+            <button class="btn-add-cart" onclick="addToCart('brahma-duplo', 'Brahma Duplo Malte Lata', 6.50)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="cervejas">
+        <div class="product-img-box">🍺</div>
+        <div class="product-info">
+          <div class="product-title">Cerveja Amstel Puro Malte Lata (350ml)</div>
+          <div class="product-desc">Receita europeia com puro malte e sabor leve e refrescante.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 6,00</span>
+            <button class="btn-add-cart" onclick="addToCart('amstel-lata', 'Cerveja Amstel Puro Malte Lata', 6.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="cervejas">
+        <div class="product-img-box">🥤</div>
+        <div class="product-info">
+          <div class="product-title">Refrigerante Lata (Coca-Cola / Guaraná)</div>
+          <div class="product-desc">Lata de 350ml super gelada. Opções: Coca-Cola normal, Zero ou Guaraná Antarctica.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 6,00</span>
+            <button class="btn-add-cart" onclick="addToCart('refri-lata', 'Refrigerante Lata 350ml', 6.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="cervejas">
+        <div class="product-img-box">🍾</div>
+        <div class="product-info">
+          <div class="product-title">Refrigerante 2 Litros (Família)</div>
+          <div class="product-desc">Garrafa de 2 litros bem gelada para acompanhar os petiscos. Coca-Cola ou Guaraná.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 14,00</span>
+            <button class="btn-add-cart" onclick="addToCart('refri-2l', 'Refrigerante 2 Litros', 14.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= DOSES & DRINKS ================= -->
+      <div class="product-card" data-cat="doses">
+        <div class="product-img-box">🥃<span class="product-badge">Artesanal</span></div>
+        <div class="product-info">
+          <div class="product-title">Dose de Cachaça Envelhecida</div>
+          <div class="product-desc">Cachaça artesanal de alambique envelhecida em barris de carvalho. Sabor suave e marcante.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 7,00</span>
+            <button class="btn-add-cart" onclick="addToCart('dose-cachaca', 'Dose Cachaça Envelhecida', 7.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="doses">
+        <div class="product-img-box">🥃</div>
+        <div class="product-info">
+          <div class="product-title">Dose de Whisky Red Label</div>
+          <div class="product-desc">Dose caprichada de whisky escocês Red Label. Servido puro ou com pedras de gelo de coco.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 15,00</span>
+            <button class="btn-add-cart" onclick="addToCart('dose-whisky', 'Dose Whisky Red Label', 15.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="doses">
+        <div class="product-img-box">🍸</div>
+        <div class="product-info">
+          <div class="product-title">Gin Tônica com Limão & Especiarias</div>
+          <div class="product-desc">Copo generoso de Gin clássico com água tônica gelada, fatias de limão taiti e zimbro.</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 18,00</span>
+            <button class="btn-add-cart" onclick="addToCart('gin-tonica', 'Gin Tônica com Limão', 18.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="doses">
+        <div class="product-img-box">🍹</div>
+        <div class="product-info">
+          <div class="product-title">Batida Tropical de Frutas</div>
+          <div class="product-desc">Cremosa e refrescante, batida com leite condensado e fruta à escolha (Maracujá, Coco ou Morango).</div>
+          <div class="product-footer">
+            <span class="product-price">R$ 14,00</span>
+            <button class="btn-add-cart" onclick="addToCart('batida-tropical', 'Batida Tropical de Frutas', 14.00)">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo-title" style="margin-bottom: 10px;">BRASA <span>& PETISCO</span></div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Espetinhos artesanais na brasa, petiscos e bebidas geladas entregues na sua porta.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="cardapio.html">Cardápio & Pedidos</a></li>
+          <li><a href="encomendas.html">Encomendas para Festas</a></li>
+          <li><a href="contato.html">Horários & Localização</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horários de Entrega</h4>
+        <p style="color: var(--text-main); font-weight: 600;">Terça a Domingo</p>
+        <p style="color: var(--primary); font-size: 1.1rem; font-weight: 800;">19:00 às 00:00</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Delivery & Balcão</h4>
+        <p style="font-size: 1.1rem; color: #25d366; font-weight: 800;">📱 (21) 99999-9999</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Brasa & Petisco Delivery - Todos os direitos reservados. Modelo Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <!-- Modal do Carrinho -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>🛒 Meu Pedido</h3>
+        <button class="btn-close-cart" onclick="toggleCart()">✕</button>
+      </div>
+
+      <div id="cart-items-container" class="cart-items-list"></div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span id="cart-total-val">R$ 0,00</span>
+        </div>
+
+        <div class="cart-inputs">
+          <input type="text" id="client-name" class="cart-input" placeholder="Seu Nome Completo">
+          <input type="text" id="client-address" class="cart-input" placeholder="Endereço de Entrega ou 'Retirar'">
+          <select id="client-payment" class="cart-input">
+            <option value="PIX">Forma de Pagamento: PIX</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Cartão de Débito">Cartão de Débito</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+        </div>
+
+        <button class="btn-checkout-whatsapp" onclick="sendWhatsAppOrder()">
+          <span>📱 Enviar Pedido pelo WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+  <script>
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -235,6 +235,7 @@ app.get('/planos/premium', (req, res) => sendPage(res, path.join('planos', 'prem
 app.get('/planos/completo-sofisticado', (req, res) => sendPage(res, path.join('planos', 'completo-sofisticado.html')));
 
 app.get('/comparativo', (req, res) => sendPage(res, 'comparativo.html'));
+app.get('/degustacao', (req, res) => sendPage(res, 'degustacao.html'));
 app.get('/tutorial-ia', (req, res) => sendPage(res, 'tutorial-ia.html'));
 app.get('/faq', (req, res) => sendPage(res, 'faq.html'));
 app.get('/contato', (req, res) => sendPage(res, 'contato.html'));

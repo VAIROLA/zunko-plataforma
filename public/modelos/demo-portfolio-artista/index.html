@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucas Rossi - Portfólio Artístico Oficial | Cantor, Compositor & Apresentador</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="artist-logo">
+        <span class="artist-name">LUCAS ROSSI</span>
+        <span class="artist-tagline">Música & Presença de Palco</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Início</a></li>
+        <li><a href="biografia.html">Biografia</a></li>
+        <li><a href="shows.html">Shows & Formatos</a></li>
+        <li><a href="imprensa.html">Press Kit & Mídia</a></li>
+      </ul>
+
+      <a href="#contratar" class="btn-booking-nav">Contratar Show</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-subtitle">Turnê Oficial 2026 / 2027</div>
+      <h1>A Emoção da Música com a <span>Força do Palco</span></h1>
+      <p>Cantor, compositor e multi-instrumentista. Uma trajetória marcada por apresentações marcantes na TV, teatros e grandes festivais pelo Brasil.</p>
+      
+      <div class="hero-actions">
+        <a href="#contratar" class="btn btn-gold">⭐ Contratar para Eventos</a>
+        <a href="shows.html" class="btn btn-outline">📅 Ver Agenda de Shows</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Player de Áudio Interativo -->
+  <div class="audio-player-section">
+    <div class="audio-box">
+      <div class="track-info">
+        <div class="track-icon">🎵</div>
+        <div>
+          <div class="track-title" id="current-track-title">Luar da Minha Terra (Ao Vivo)</div>
+          <div class="track-artist" id="current-track-artist">Lucas Rossi • Álbum Acústico</div>
+        </div>
+      </div>
+
+      <div style="flex-grow: 1; max-width: 450px; margin: 0 20px;">
+        <div style="background: var(--border); height: 6px; border-radius: 3px; overflow: hidden; cursor: pointer;">
+          <div id="audio-progress-bar" style="background: var(--gold); height: 100%; width: 0%; transition: width 0.3s;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">
+          <span>0:00</span>
+          <span>Prévia Demonstrativa</span>
+        </div>
+      </div>
+
+      <div class="player-controls">
+        <button class="btn-play-pause" onclick="toggleAudio()">
+          <span id="btn-play-icon">▶</span>
+        </button>
+        <button class="btn-outline" style="padding: 8px 14px; font-size: 0.8rem; border-radius: 20px;" onclick="nextTrack()">
+          Próxima ❯
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Biografia Resumo -->
+  <section class="section">
+    <div class="bio-grid">
+      <div class="bio-photo-wrap">
+        🎸
+      </div>
+
+      <div class="bio-text">
+        <div class="section-tag">Sobre o Artista</div>
+        <h3>Mais de 10 Anos Encantando Plateias</h3>
+        <p>Com voz marcante e presença cênica cativante, Lucas Rossi construiu sua história musical unindo a tradição das raízes populares ao frescor da música contemporânea.</p>
+        <p>Já dividiu palcos com grandes referências da música nacional, gravou participações em especiais de TV e rádio e rodou mais de 8 estados com apresentações aclamadas pelo público e pela crítica especializada.</p>
+
+        <div class="bio-stats">
+          <div class="stat-item">
+            <h4>+200</h4>
+            <p>Shows Realizados</p>
+          </div>
+          <div class="stat-item">
+            <h4>+8</h4>
+            <p>Estados Percorridos</p>
+          </div>
+          <div class="stat-item">
+            <h4>100%</h4>
+            <p>Emoção ao Vivo</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 25px;">
+          <a href="biografia.html" class="btn btn-outline" style="padding: 10px 22px; font-size: 0.85rem;">Ler Biografia Completa ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria de Momentos -->
+  <section class="section" style="border-top: 1px solid var(--border); padding-top: 60px;">
+    <div class="section-header">
+      <div class="section-tag">Galeria Oficial</div>
+      <h2 class="section-title">Palco, Bastidores & Televisão</h2>
+      <p class="section-desc">Confira registros fotográficos e momentos inesquecíveis das últimas turnês e gravações.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <div class="gallery-img">🎤</div>
+        <div class="gallery-info">
+          <div class="gallery-category">Ao Vivo</div>
+          <div class="gallery-title">Festival de Inverno</div>
+          <div class="gallery-desc">Show principal para mais de 10 mil pessoas em praça pública.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img">📺</div>
+        <div class="gallery-info">
+          <div class="gallery-category">Televisão</div>
+          <div class="gallery-title">Programa Especial de TV</div>
+          <div class="gallery-desc">Entrevista ao vivo e pocket show acústico no estúdio.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img">🎙️</div>
+        <div class="gallery-info">
+          <div class="gallery-category">Estúdio</div>
+          <div class="gallery-title">Gravação do Novo Álbum</div>
+          <div class="gallery-desc">Processo criativo e arranjos com banda completa.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img">📸</div>
+        <div class="gallery-info">
+          <div class="gallery-category">Ensaio</div>
+          <div class="gallery-title">Ensaio Fotográfico Oficial</div>
+          <div class="gallery-desc">Sessão exclusiva para divulgação de imprensa e turnê.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agenda Resumida -->
+  <section class="section" style="border-top: 1px solid var(--border); padding-top: 60px;">
+    <div class="section-header">
+      <div class="section-tag">Agenda de Shows</div>
+      <h2 class="section-title">Próximas Apresentações</h2>
+      <p class="section-desc">Confira por onde a turnê está passando e garanta sua presença.</p>
+    </div>
+
+    <div class="tour-list">
+      <div class="tour-card">
+        <div class="tour-date">
+          <span class="date-day">14</span>
+          <span class="date-month">Nov</span>
+        </div>
+        <div class="tour-details">
+          <div class="tour-city">Rio de Janeiro / RJ</div>
+          <div class="tour-venue">Teatro Municipal • Show Acústico Intimista</div>
+        </div>
+        <a href="#contratar" class="btn-ticket">Informações</a>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-date">
+          <span class="date-day">28</span>
+          <span class="date-month">Nov</span>
+        </div>
+        <div class="tour-details">
+          <div class="tour-city">Belo Horizonte / MG</div>
+          <div class="tour-venue">Festival Primavera das Artes • Palco Principal</div>
+        </div>
+        <a href="#contratar" class="btn-ticket">Informações</a>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-date">
+          <span class="date-day">12</span>
+          <span class="date-month">Dez</span>
+        </div>
+        <div class="tour-details">
+          <div class="tour-city">São Paulo / SP</div>
+          <div class="tour-venue">Casa de Shows Central • Gravação Ao Vivo</div>
+        </div>
+        <a href="#contratar" class="btn-ticket">Informações</a>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="shows.html" class="btn btn-outline" style="font-size: 0.85rem;">Ver Todos os Formatos de Shows ➔</a>
+    </div>
+  </section>
+
+  <!-- Área de Contratação & Press Kit -->
+  <section id="contratar" class="booking-section">
+    <div class="booking-box">
+      <div class="section-tag">Contratação de Shows & Eventos</div>
+      <h2 class="section-title">Leve Esta Experiência para o Seu Evento</h2>
+      <p class="section-desc">Disponível para festivais, casas de show, prefeituras (editais/cultura), eventos corporativos e confraternizações especiais.</p>
+
+      <!-- Downloads do Press Kit -->
+      <div class="press-kit-download-grid">
+        <a href="imprensa.html" class="press-card">
+          <div class="press-card-icon">📄</div>
+          <h4>Release Oficial (PDF)</h4>
+          <p>Histórico completo e texto para divulgação em jornais e sites.</p>
+        </a>
+
+        <a href="shows.html" class="press-card">
+          <div class="press-card-icon">🎛️</div>
+          <h4>Rider Técnico & Som</h4>
+          <p>Especificações de canais, microfones e iluminação de palco.</p>
+        </a>
+
+        <a href="shows.html" class="press-card">
+          <div class="press-card-icon">📐</div>
+          <h4>Mapa de Palco</h4>
+          <p>Disposição da banda, retornos e instrumentos para técnicos.</p>
+        </a>
+      </div>
+
+      <!-- Formulário Direto para WhatsApp do Empresário -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 35px 25px; text-align: left; max-width: 650px; margin: 0 auto;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #fff; margin-bottom: 8px; text-align: center;">Solicitar Orçamento / Disponibilidade</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 25px;">Preencha os dados abaixo para gerar a proposta direta no WhatsApp da produção:</p>
+
+        <form onsubmit="sendBookingWhatsApp(event)">
+          <div style="margin-bottom: 14px;">
+            <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Nome do Produtor ou Contratante:</label>
+            <input type="text" id="contractor-name" style="width: 100%; padding: 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; color: #fff;" placeholder="Ex: Rodrigo Mendonça (Produtor)" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">WhatsApp / Telefone:</label>
+              <input type="tel" id="contractor-phone" style="width: 100%; padding: 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; color: #fff;" placeholder="(21) 99999-8888" required>
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Data Prevista:</label>
+              <input type="date" id="event-date" style="width: 100%; padding: 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; color: #fff;" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Tipo de Evento:</label>
+              <select id="event-type" style="width: 100%; padding: 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; color: #fff;">
+                <option value="Festival Público / Prefeitura">Festival Público / Prefeitura</option>
+                <option value="Casa de Shows / Teatro">Casa de Shows / Teatro</option>
+                <option value="Evento Corporativo / Empresa">Evento Corporativo / Empresa</option>
+                <option value="Casamento / Confraternização Privada">Casamento / Confraternização Privada</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Cidade / UF:</label>
+              <input type="text" id="event-city" style="width: 100%; padding: 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; color: #fff;" placeholder="Ex: Maricá / RJ" required>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Observações (Formato desejado, estrutura, etc.):</label>
+            <textarea id="event-notes" style="width: 100%; padding: 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; color: #fff; min-height: 80px;" placeholder="Ex: Show com banda completa ou acústico?"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; font-size: 1rem;">
+            📱 Enviar Proposta para o WhatsApp da Produção
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div class="artist-name" style="font-size: 1.3rem;">LUCAS ROSSI</div>
+        <div class="artist-tagline">Música & Presença de Palco</div>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://instagram.com" target="_blank" class="social-link">Instagram</a>
+        <a href="https://youtube.com" target="_blank" class="social-link">YouTube</a>
+        <a href="https://spotify.com" target="_blank" class="social-link">Spotify</a>
+        <a href="https://facebook.com" target="_blank" class="social-link">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Lucas Rossi - Todos os direitos reservados. Modelo Demonstrativo de Portfólio de Artista.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

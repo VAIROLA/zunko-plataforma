@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeos & Cenas - Arthur Valente | Ator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="actor-logo">
+        <span class="actor-name">ARTHUR VALENTE</span>
+        <span class="actor-sub">Ator • TV • Cinema • Teatro</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="atuacoes-videos.html" class="active">Vídeos & Cenas</a></li>
+        <li><a href="galeria-book.html">Book de Fotos</a></li>
+        <li><a href="curriculo-contato.html">Currículo & Contato</a></li>
+      </ul>
+
+      <a href="curriculo-contato.html#contato" class="btn-casting-nav">Agendar Casting</a>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section style="background: radial-gradient(circle at center, #1b160f 0%, #08090c 100%); padding: 50px 20px 35px; text-align: center; border-bottom: 1px solid var(--border);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="section-tag">Material Audiovisual</div>
+      <h1 class="section-title">Showreel & Cenas Selecionadas</h1>
+      <p class="section-desc">Compilado de atuações para diretores de casting, produtores de TV e cineastas.</p>
+    </div>
+  </section>
+
+  <!-- Showreel Principal em Destaque -->
+  <section class="section" style="margin-top: 50px;">
+    <div style="background: var(--bg-card); border: 2px solid var(--primary); border-radius: 16px; overflow: hidden; padding: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.7);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <span style="color: var(--primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Destaque Principal</span>
+          <h2 style="font-family: var(--font-serif); color: #fff; font-size: 1.8rem;">Showreel Oficial de Atuação 2026</h2>
+        </div>
+        <span style="background: rgba(226, 183, 20, 0.15); color: var(--primary); padding: 5px 14px; border-radius: 20px; font-weight: bold; font-size: 0.85rem;">4K Ultra HD</span>
+      </div>
+
+      <div class="hero-video-box" style="margin-bottom: 20px;" onclick="playVideoDemo('Showreel Oficial 2026 - Completo', 'Melhores Cenas de Drama, Ação e Comédia')">
+        <div style="font-size: 6rem; opacity: 0.25;">🎬</div>
+        <div class="video-thumb-overlay" style="align-items: center; justify-content: center;">
+          <div class="btn-play-video" style="width: 80px; height: 80px; font-size: 2.2rem;">▶</div>
+          <p style="color: #fff; font-weight: bold; font-size: 1.1rem; margin-top: 10px;">Clique para Assistir o Showreel Completo (03:45)</p>
+        </div>
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+        Compilado com as principais cenas gravadas em séries de streaming, novelas e longas-metragens independentes. Edição ágil com foco na expressão dos olhos, ritmo de fala e verdade cênica.
+      </p>
+    </div>
+  </section>
+
+  <!-- Galeria de Cenas por Categoria -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-tag">Categorias de Cenas</div>
+      <h2 class="section-title">Trabalhos por Linguagem</h2>
+      <p class="section-desc">Assista a recortes específicos de atuação conforme o perfil do seu personagem.</p>
+    </div>
+
+    <div class="videos-grid">
+      <!-- Cena 1: Televisão -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Cena Novela das Nove: O Testamento', 'Televisão • Emissora Nacional')">
+          <span style="font-size: 3rem;">📺</span>
+          <span class="video-badge">02:15</span>
+        </div>
+        <div class="video-info">
+          <h4>Novela: O Confronto do Herdeiro</h4>
+          <p style="color: var(--primary); font-size: 0.8rem; font-weight: bold; margin-bottom: 6px;">TELEVISÃO (Novela)</p>
+          <p>Personagem: Lucas Toledo (Advogado em conflito moral). Direção de núcleo dramático em estúdio.</p>
+        </div>
+      </div>
+
+      <!-- Cena 2: Cinema Drama -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Longa-Metragem: Entre Sombras e Neblina', 'Cinema • Longa-Metragem')">
+          <span style="font-size: 3rem;">🎥</span>
+          <span class="video-badge">03:30</span>
+        </div>
+        <div class="video-info">
+          <h4>Cinema: O Ponto de Virada</h4>
+          <p style="color: var(--primary); font-size: 0.8rem; font-weight: bold; margin-bottom: 6px;">CINEMA (Longa-Metragem)</p>
+          <p>Personagem: Daniel (Homem solitário confrontado pelo passado). Seleção oficial em festivais de cinema.</p>
+        </div>
+      </div>
+
+      <!-- Cena 3: Ação / Policial -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Série Policial: Operação Fronteira', 'Série Streaming • Ação')">
+          <span style="font-size: 3rem;">🔫</span>
+          <span class="video-badge">01:50</span>
+        </div>
+        <div class="video-info">
+          <h4>Série de Ação: Investigação</h4>
+          <p style="color: var(--primary); font-size: 0.8rem; font-weight: bold; margin-bottom: 6px;">SÉRIE / STREAMING</p>
+          <p>Personagem: Agente federal em operação de campo. Trabalho de postura corporal, tática e tiroteio cênico.</p>
+        </div>
+      </div>
+
+      <!-- Cena 4: Teatro Monólogo -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Monólogo Cênico: O Julgamento de Sócrates', 'Teatro • Palco Italiano')">
+          <span style="font-size: 3rem;">🎭</span>
+          <span class="video-badge">04:10</span>
+        </div>
+        <div class="video-info">
+          <h4>Teatro: A Defesa Final</h4>
+          <p style="color: var(--primary); font-size: 0.8rem; font-weight: bold; margin-bottom: 6px;">TEATRO CLÁSSICO</p>
+          <p>Interpretação ao vivo com iluminação dramática, dicção clássica e densidade de texto filosófico.</p>
+        </div>
+      </div>
+
+      <!-- Cena 5: Comédia -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Curta de Comédia: O Casamento do Século', 'Comédia / Timing Cômico')">
+          <span style="font-size: 3rem;">😄</span>
+          <span class="video-badge">02:05</span>
+        </div>
+        <div class="video-info">
+          <h4>Comédia: O Padrinho Trapalhão</h4>
+          <p style="color: var(--primary); font-size: 0.8rem; font-weight: bold; margin-bottom: 6px;">COMÉDIA</p>
+          <p>Trabalho apurado de timing cômico, expressões faciais e situações de constrangimento engraçado.</p>
+        </div>
+      </div>
+
+      <!-- Cena 6: Self-Tape -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Self-Tape Profissional: Apresentação para Produtores de Elenco', 'Self-Tape • Casting')">
+          <span style="font-size: 3rem;">📱</span>
+          <span class="video-badge">01:30</span>
+        </div>
+        <div class="video-info">
+          <h4>Self-Tape & Apresentação</h4>
+          <p style="color: var(--primary); font-size: 0.8rem; font-weight: bold; margin-bottom: 6px;">MATERIAL DE AUDIÇÃO</p>
+          <p>Vídeo gravado em estúdio neutro com iluminação de audição, perfil frontal, perfis laterais e fala natural.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <div class="actor-name" style="font-size: 1.3rem;">ARTHUR VALENTE</div>
+        <div class="actor-sub">DRT: 45.892/RJ • Ator Profissional</div>
+      </div>
+      <div>
+        <span style="color: var(--text-muted); font-size: 0.85rem;">Agenciamento Artístico:</span>
+        <div style="color: var(--primary); font-weight: bold;">Talentos & Cinema Produções</div>
+      </div>
+      <div>
+        <span style="color: var(--text-muted); font-size: 0.85rem;">WhatsApp para Casting:</span>
+        <div style="color: #25d366; font-weight: bold;">(21) 99999-9999</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Arthur Valente - Todos os direitos reservados. Modelo Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="lightbox-modal">
+    <div class="lightbox-content" style="max-width: 850px;">
+      <button class="btn-close-lightbox" onclick="closeVideoModal()">✕</button>
+      <div style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 4rem; margin-bottom: 15px;">🎬</div>
+          <div id="video-modal-type" style="color: var(--primary); font-weight: bold; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px;"></div>
+          <h3 id="video-modal-title" style="color: #fff; font-size: 1.6rem; margin-bottom: 12px;"></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
+            [Espaço para reprodução do vídeo em alta resolução do ator: YouTube, Vimeo ou arquivo local MP4].
+          </p>
+          <button class="btn btn-primary" onclick="alert('Vídeo reproduzido em alta definição!')">▶ Assistir Vídeo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

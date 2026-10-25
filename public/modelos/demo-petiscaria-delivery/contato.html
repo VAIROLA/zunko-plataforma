@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horários & Contato - Brasa & Petisco</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Status -->
+  <div class="top-status-bar">
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span>ATENDIMENTO HOJE DAS 19:00 ÀS 00:00</span>
+    </div>
+    <span style="color: #64748b;">|</span>
+    <span>📍 Retirada no Balcão & Delivery Noturno</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-wrap">
+        <div class="logo-badge">🍢</div>
+        <div>
+          <div class="logo-title">BRASA <span>& PETISCO</span></div>
+          <div class="logo-tag">Espetaria, Petiscos & Bar</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cardapio.html">Cardápio Completo</a></li>
+        <li><a href="encomendas.html">Encomendas & Delivery</a></li>
+        <li><a href="contato.html" class="active">Horários & Contato</a></li>
+      </ul>
+
+      <button class="nav-cart-btn" onclick="toggleCart()">
+        🛒 Meu Pedido (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabeçalho -->
+  <section style="background: #12151c; padding: 45px 20px 25px; text-align: center; border-bottom: 1px solid var(--border);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h1 style="font-size: 2.4rem; color: #fff; margin-bottom: 10px;">Onde Estamos & Como Falar Conosco</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">Venha retirar seu pedido no balcão ou peça para entregarmos quentinho na sua casa!</p>
+    </div>
+  </section>
+
+  <!-- Conteúdo de Contato -->
+  <main style="max-width: 1100px; margin: 50px auto 70px; padding: 0 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+      
+      <!-- Coluna 1: Informações e Horários -->
+      <div>
+        <!-- Card Horários -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 25px; margin-bottom: 25px;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 8px;">
+            ⏰ Horário de Funcionamento
+          </h3>
+
+          <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <span style="color: var(--text-muted);">Segunda-feira:</span>
+            <span style="color: var(--accent); font-weight: bold;">Fechado (Descanso)</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <span style="color: var(--text-main);">Terça-feira:</span>
+            <span style="color: var(--primary); font-weight: bold;">19:00 às 00:00</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <span style="color: var(--text-main);">Quarta-feira:</span>
+            <span style="color: var(--primary); font-weight: bold;">19:00 às 00:00</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <span style="color: var(--text-main);">Quinta-feira:</span>
+            <span style="color: var(--primary); font-weight: bold;">19:00 às 00:00</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <span style="color: var(--text-main);">Sexta-feira (Picos):</span>
+            <span style="color: var(--primary); font-weight: bold;">19:00 às 00:00</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <span style="color: var(--text-main);">Sábado (Picos):</span>
+            <span style="color: var(--primary); font-weight: bold;">19:00 às 00:00</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+            <span style="color: var(--text-main);">Domingo:</span>
+            <span style="color: var(--primary); font-weight: bold;">19:00 às 00:00</span>
+          </div>
+        </div>
+
+        <!-- Card Endereço e Canais -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 25px;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 8px;">
+            📍 Endereço & Atendimento
+          </h3>
+
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">
+            🏢 <strong>Endereço para Retirada:</strong><br>
+            Rua dos Sabores, nº 150 - Bairro Central (Fictício para Demonstração)
+          </p>
+
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">
+            📱 <strong>WhatsApp de Atendimento:</strong><br>
+            <a href="https://wa.me/5521999999999" target="_blank" style="color: #25d366; text-decoration: none; font-weight: 800; font-size: 1.1rem;">(21) 99999-9999</a>
+          </p>
+
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            📸 <strong>Instagram:</strong><br>
+            <span style="color: var(--primary);">@brasaepetiscodelivery</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Coluna 2: Formulário Rápido de Contato & Mapa Demonstrativo -->
+      <div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 25px; margin-bottom: 25px;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: #fff;">Envie uma Mensagem</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Dúvidas sobre encomendas, sugestões ou parcerias? Mande uma mensagem direta:</p>
+
+          <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');">
+            <div style="margin-bottom: 14px;">
+              <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Seu Nome:</label>
+              <input type="text" class="cart-input" style="margin-bottom: 0;" placeholder="Ex: Carlos Silva" required>
+            </div>
+
+            <div style="margin-bottom: 14px;">
+              <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Seu WhatsApp ou Telefone:</label>
+              <input type="tel" class="cart-input" style="margin-bottom: 0;" placeholder="Ex: (21) 99999-8888" required>
+            </div>
+
+            <div style="margin-bottom: 18px;">
+              <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Mensagem:</label>
+              <textarea class="cart-input" style="min-height: 100px; resize: vertical; margin-bottom: 0;" placeholder="Como podemos te ajudar?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">✉️ Enviar Mensagem</button>
+          </form>
+        </div>
+
+        <!-- Box Visual Localização -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 25px; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 10px;">🗺️</div>
+          <h4 style="color: #fff; margin-bottom: 8px;">Facilidade para Encontrar</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Ponto de fácil acesso com estacionamento rápido para retirada de pedidos no balcão.</p>
+          <a href="https://maps.google.com" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem;">📍 Abrir no Google Maps</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo-title" style="margin-bottom: 10px;">BRASA <span>& PETISCO</span></div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Espetaria, Petiscos & Bar Delivery.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="cardapio.html">Cardápio & Pedidos</a></li>
+          <li><a href="encomendas.html">Encomendas para Festas</a></li>
+          <li><a href="contato.html">Horários & Localização</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horários</h4>
+        <p style="color: var(--primary); font-weight: 800;">19:00 às 00:00</p>
+        <p style="font-size: 0.8rem; color: #64748b;">Terça a Domingo</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>WhatsApp de Contato</h4>
+        <p style="font-size: 1.1rem; color: #25d366; font-weight: 800;">📱 (21) 99999-9999</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Brasa & Petisco Delivery - Todos os direitos reservados. Modelo Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Carrinho -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>🛒 Meu Pedido</h3>
+        <button class="btn-close-cart" onclick="toggleCart()">✕</button>
+      </div>
+      <div id="cart-items-container" class="cart-items-list"></div>
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span id="cart-total-val">R$ 0,00</span>
+        </div>
+        <div class="cart-inputs">
+          <input type="text" id="client-name" class="cart-input" placeholder="Seu Nome Completo">
+          <input type="text" id="client-address" class="cart-input" placeholder="Endereço de Entrega ou 'Retirar'">
+          <select id="client-payment" class="cart-input">
+            <option value="PIX">Forma de Pagamento: PIX</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Cartão de Débito">Cartão de Débito</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+        </div>
+        <button class="btn-checkout-whatsapp" onclick="sendWhatsAppOrder()">
+          <span>📱 Enviar Pedido pelo WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>

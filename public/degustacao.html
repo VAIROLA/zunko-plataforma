@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Degustação Interativa de Sites • ZUNKO</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #00d2ff;
+      --secondary: #3a7bd5;
+      --dark: #070b14;
+      --bar-bg: #0b1120;
+      --border: #1e293b;
+    }
+    body {
+      background: var(--dark);
+      color: #f8fafc;
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .zunko-header {
+      height: 64px;
+      background: var(--bar-bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 50;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .model-btn {
+      transition: all 0.2s ease;
+    }
+    .model-btn.active {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4);
+    }
+    .device-btn.active {
+      background: #1e293b;
+      color: #38bdf8;
+    }
+    .preview-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: #030712;
+      padding: 8px;
+      overflow: hidden;
+    }
+    .frame-wrapper {
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+    .mode-mobile iframe {
+      width: 390px;
+      height: 94%;
+      border-radius: 36px;
+      box-shadow: 0 0 0 10px #1e293b, 0 20px 45px rgba(0,0,0,0.8);
+      border: 3px solid #334155;
+    }
+    .mode-tablet iframe {
+      width: 768px;
+      height: 94%;
+      border-radius: 24px;
+      box-shadow: 0 0 0 10px #1e293b, 0 20px 45px rgba(0,0,0,0.8);
+      border: 3px solid #334155;
+    }
+    .mode-desktop iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    .watermark {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      background: rgba(11, 17, 32, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #94a3b8;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      pointer-events: none;
+      z-index: 30;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header ZUNKO Demo Bar -->
+  <header class="zunko-header">
+    <!-- Brand / Voltar -->
+    <div class="flex items-center gap-3">
+      <a href="/" class="flex items-center gap-2 text-white hover:opacity-80 transition" title="Voltar para a página inicial da ZUNKO">
+        <span class="text-xl font-black tracking-wider bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent" style="font-family: 'Montserrat', sans-serif;">ZUNKO</span>
+      </a>
+      <span class="text-[11px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/60 hidden sm:inline-block">
+        Degustação
+      </span>
+    </div>
+
+    <!-- Switcher de Modelos -->
+    <div class="flex items-center bg-slate-900 border border-slate-800 p-1 rounded-full gap-1 overflow-x-auto">
+      <button class="model-btn active text-xs font-semibold px-3 py-1.5 rounded-full text-slate-300 flex items-center gap-1.5 whitespace-nowrap" onclick="loadModel('/modelos/demo-petiscaria-delivery/index.html', this, 'Petiscaria & Espetinhos')">
+        <span>🍢</span> <span class="hidden md:inline">Petiscaria & Bar</span><span class="md:hidden">Petiscaria</span>
+      </button>
+      <button class="model-btn text-xs font-semibold px-3 py-1.5 rounded-full text-slate-300 flex items-center gap-1.5 whitespace-nowrap" onclick="loadModel('/modelos/demo-portfolio-artista/index.html', this, 'Portfólio Cantor & Músico')">
+        <span>🎤</span> <span class="hidden md:inline">Cantor & Músico</span><span class="md:hidden">Cantor</span>
+      </button>
+      <button class="model-btn text-xs font-semibold px-3 py-1.5 rounded-full text-slate-300 flex items-center gap-1.5 whitespace-nowrap" onclick="loadModel('/modelos/demo-portfolio-ator/index.html', this, 'Portfólio Ator TV & Cinema')">
+        <span>🎬</span> <span class="hidden md:inline">Ator TV & Teatro</span><span class="md:hidden">Ator</span>
+      </button>
+    </div>
+
+    <!-- Controles da Direita -->
+    <div class="flex items-center gap-3">
+      <!-- Device switcher -->
+      <div class="hidden lg:flex items-center bg-slate-900 border border-slate-800 p-0.5 rounded-lg gap-0.5">
+        <button id="btn-desktop" class="device-btn active p-1.5 rounded text-sm text-slate-400 hover:text-white" onclick="setDevice('desktop')" title="Ver em Tela Cheia">💻</button>
+        <button id="btn-tablet" class="device-btn p-1.5 rounded text-sm text-slate-400 hover:text-white" onclick="setDevice('tablet')" title="Simular Tablet">📱</button>
+        <button id="btn-mobile" class="device-btn p-1.5 rounded text-sm text-slate-400 hover:text-white" onclick="setDevice('mobile')" title="Simular Celular">📲</button>
+      </div>
+
+      <!-- Botão de Ação WhatsApp -->
+      <a id="btn-whatsapp" href="https://wa.me/5521966725240?text=Ol%C3%A1%20ZUNKO!%20Estou%20na%20p%C3%A1gina%20de%20degusta%C3%A7%C3%A3o%20e%20gostei%20do%20modelo%20Petiscaria%20%26%20Espetinhos!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold text-xs md:text-sm px-3.5 py-2 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.3)] transition flex items-center gap-1.5 whitespace-nowrap">
+        <span>Quero um Site Assim</span> &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Viewer Sandbox -->
+  <main class="preview-container">
+    <div id="frameWrapper" class="frame-wrapper mode-desktop">
+      <iframe id="previewFrame" src="/modelos/demo-petiscaria-delivery/index.html" title="Degustação ZUNKO"></iframe>
+    </div>
+
+    <div class="watermark">
+      🔒 Degustação Interativa • <span class="text-cyan-400 font-bold">ZUNKO</span>
+    </div>
+  </main>
+
+  <script>
+    let currentModelName = 'Petiscaria & Espetinhos';
+
+    function loadModel(url, btn, name) {
+      document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentModelName = name;
+
+      const iframe = document.getElementById('previewFrame');
+      iframe.src = url;
+
+      const whatsappBtn = document.getElementById('btn-whatsapp');
+      const text = encodeURIComponent(`Olá ZUNKO! Estou testando a degustação interativa e adorei o modelo "${name}". Gostaria de um orçamento para o meu negócio!`);
+      whatsappBtn.href = `https://wa.me/5521966725240?text=${text}`;
+    }
+
+    function setDevice(device) {
+      const wrapper = document.getElementById('frameWrapper');
+      wrapper.className = 'frame-wrapper mode-' + device;
+
+      document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + device).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

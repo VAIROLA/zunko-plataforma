@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arthur Valente - Ator Profissional | TV, Cinema & Teatro</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="actor-logo">
+        <span class="actor-name">ARTHUR VALENTE</span>
+        <span class="actor-sub">Ator • TV • Cinema • Teatro</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Início</a></li>
+        <li><a href="atuacoes-videos.html">Vídeos & Cenas</a></li>
+        <li><a href="galeria-book.html">Book de Fotos</a></li>
+        <li><a href="curriculo-contato.html">Currículo & Contato</a></li>
+      </ul>
+
+      <a href="curriculo-contato.html#contato" class="btn-casting-nav">Agendar Casting</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-wrap">
+      <div class="hero-text">
+        <div class="hero-drt-badge">🎭 DRT: 45.892/RJ • Ator Profissional</div>
+        <h1>A Arte de Viver <span>Múltiplos Personagens</span></h1>
+        <p class="hero-desc">
+          Ator com formação clássica e experiência consolidada em teledramaturgia, longas-metragens independentes e espetáculos teatrais premiados. Presença cênica, verdade dramática e versatilidade.
+        </p>
+        
+        <div class="hero-btns">
+          <a href="atuacoes-videos.html" class="btn btn-primary">🎬 Assistir Showreel</a>
+          <a href="galeria-book.html" class="btn btn-outline">📸 Ver Book de Fotos</a>
+        </div>
+      </div>
+
+      <!-- Video Showreel Box -->
+      <div class="hero-video-box" onclick="playVideoDemo('Showreel Oficial 2026 - Arthur Valente', 'Melhores Momentos de TV, Cinema e Teatro')">
+        <div style="font-size: 5rem; opacity: 0.3;">🎬</div>
+        <div class="video-thumb-overlay">
+          <div class="btn-play-video">▶</div>
+          <div style="color: var(--primary); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Vídeo de Apresentação</div>
+          <h3 style="color: #fff; font-size: 1.3rem;">Showreel Oficial de Atuação</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Cenas dramáticas, suspense e comédia reunidas em 3 minutos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ficha Técnica Rápida do Ator -->
+  <div class="quick-specs-bar">
+    <div class="specs-grid">
+      <div class="spec-item">
+        <h5>Registro</h5>
+        <p>DRT Profissional</p>
+      </div>
+      <div class="spec-item">
+        <h5>Altura / Peso</h5>
+        <p>1,82m • 78kg</p>
+      </div>
+      <div class="spec-item">
+        <h5>Olhos / Cabelo</h5>
+        <p>Castanhos • Escuro</p>
+      </div>
+      <div class="spec-item">
+        <h5>Idiomas</h5>
+        <p>Português • Inglês • Espanhol</p>
+      </div>
+      <div class="spec-item">
+        <h5>Habilidades</h5>
+        <p>Luta Cênica • Canto • Equitação</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Galeria de Fotos em Destaque (Muitas fotos como pedido) -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-tag">Book & Caracterizações</div>
+      <h2 class="section-title">Galeria de Personagens & Ensaios</h2>
+      <p class="section-desc">Clique em qualquer fotografia para ampliar em alta definição e ver detalhes da caracterização.</p>
+    </div>
+
+    <div class="photo-gallery-grid">
+      <!-- Foto 1 -->
+      <div class="photo-card" onclick="openLightbox('🎭', 'Expressão Dramática - Olhar Marcante', 'Headshot / Estúdio', 'Ensaio fotográfico para peças dramáticas e séries de suspense.')">
+        <div class="photo-placeholder">👤</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Headshot Estúdio</div>
+          <div class="photo-title">Expressão Dramática</div>
+        </div>
+      </div>
+
+      <!-- Foto 2 -->
+      <div class="photo-card" onclick="openLightbox('🎩', 'Personagem de Época - Século XIX', 'Cinema / Figurino Histórico', 'Caracterização para o longa-metragem histórico O Último Barão.')">
+        <div class="photo-placeholder">🎩</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Cinema de Época</div>
+          <div class="photo-title">O Barão (Século XIX)</div>
+        </div>
+      </div>
+
+      <!-- Foto 3 -->
+      <div class="photo-card" onclick="openLightbox('🎬', 'Cena de Novela / TV', 'Teledramaturgia', 'Registro de cena gravada em estúdio com iluminação de TV.')">
+        <div class="photo-placeholder">📺</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Televisão</div>
+          <div class="photo-title">Confronto em Família</div>
+        </div>
+      </div>
+
+      <!-- Foto 4 -->
+      <div class="photo-card" onclick="openLightbox('💼', 'Executivo Contemporâneo', 'Publicidade & Séries', 'Perfil profissional urbano para filmes corporativos e séries de negócios.')">
+        <div class="photo-placeholder">💼</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Perfil Contemporâneo</div>
+          <div class="photo-title">Executivo / Líder</div>
+        </div>
+      </div>
+
+      <!-- Foto 5 -->
+      <div class="photo-card" onclick="openLightbox('🌾', 'Personagem Regional / Sertanejo', 'Teatro & Cinema', 'Homem do interior, caracterização simples com sotaque trabalhado.')">
+        <div class="photo-placeholder">🌾</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Regional / Campo</div>
+          <div class="photo-title">Matuto / Sertanejo</div>
+        </div>
+      </div>
+
+      <!-- Foto 6 -->
+      <div class="photo-card" onclick="openLightbox('🎭', 'O Clássico Hamlet', 'Teatro Clássico', 'Montagem no Teatro Municipal com direção premiada.')">
+        <div class="photo-placeholder">👑</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Teatro Clássico</div>
+          <div class="photo-title">Hamlet (Shakespeare)</div>
+        </div>
+      </div>
+
+      <!-- Foto 7 -->
+      <div class="photo-card" onclick="openLightbox('🔫', 'Policial Investigador', 'Séries & Curtas', 'Cena de ação, investigação criminal e postura tática.')">
+        <div class="photo-placeholder">🕵️</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Policial / Ação</div>
+          <div class="photo-title">Detetive Morales</div>
+        </div>
+      </div>
+
+      <!-- Foto 8 -->
+      <div class="photo-card" onclick="openLightbox('😄', 'Comédia & Simpatia', 'Comercial de TV', 'Sorriso aberto, energia positiva e comunicação leve para marcas.')">
+        <div class="photo-placeholder">😄</div>
+        <div class="photo-overlay">
+          <div class="photo-tag">Comédia / Publicidade</div>
+          <div class="photo-title">Pai de Família / Bom Humor</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="galeria-book.html" class="btn btn-outline">📸 Ver Mais 20 Fotos do Book Completo ➔</a>
+    </div>
+  </section>
+
+  <!-- Seção de Vídeos em Destaque -->
+  <section class="section" style="border-top: 1px solid var(--border); padding-top: 70px;">
+    <div class="section-head">
+      <div class="section-tag">Audiovisual & Atuação</div>
+      <h2 class="section-title">Cenas de Cinema, Séries & Teatro</h2>
+      <p class="section-desc">Vídeos selecionados para avaliação de diretores de elenco e produtores.</p>
+    </div>
+
+    <div class="videos-grid">
+      <!-- Video 1 -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Cena de Confronto Dramático (Série TV)', 'Drama • 1080p')">
+          <span style="font-size: 3rem;">📺</span>
+          <span class="video-badge">02:40</span>
+        </div>
+        <div class="video-info">
+          <h4>Cena de Confronto Dramático</h4>
+          <p>Série de TV: Diálogo intenso de alta carga emocional e quebra de expectativa entre irmãos.</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Cena de Perseguição e Suspense (Cinema)', 'Cinema • 4K')">
+          <span style="font-size: 3rem;">🎥</span>
+          <span class="video-badge">01:55</span>
+        </div>
+        <div class="video-info">
+          <h4>Suspense & Ação Policial</h4>
+          <p>Longa-metragem: Atuação sob pressão, tensão psicológica e trabalho corporal apurado.</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-screen" onclick="playVideoDemo('Monólogo Cênico de Teatro', 'Palco • Áudio Direto')">
+          <span style="font-size: 3rem;">🎭</span>
+          <span class="video-badge">03:15</span>
+        </div>
+        <div class="video-info">
+          <h4>Monólogo: O Despertar da Memória</h4>
+          <p>Texto autoral dramático com projeção de voz potente e silêncios expressivos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="atuacoes-videos.html" class="btn btn-outline">🎬 Ver Todos os Vídeos & Cenas ➔</a>
+    </div>
+  </section>
+
+  <!-- Banner de Contato Rápido para Casting -->
+  <section style="background: radial-gradient(circle at center, #1b160f 0%, #08090c 100%); border-top: 1px solid var(--border); padding: 70px 20px; text-align: center;">
+    <div style="max-width: 750px; margin: 0 auto;">
+      <span class="section-tag">Produtores & Agências</span>
+      <h2 style="font-family: var(--font-serif); font-size: 2.4rem; color: #fff; margin: 12px 0 16px;">Precisa de Ator para o Seu Projeto?</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px;">
+        Disponibilidade para testes de elenco (presenciais ou self-tapes), leitura de mesa e gravações no Rio de Janeiro, São Paulo e em todo o Brasil.
+      </p>
+      <a href="curriculo-contato.html#contato" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px;">
+        ✉️ Solicitar Disponibilidade & Currículo
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <div class="actor-name" style="font-size: 1.3rem;">ARTHUR VALENTE</div>
+        <div class="actor-sub">DRT: 45.892/RJ • Ator Profissional</div>
+      </div>
+      <div>
+        <span style="color: var(--text-muted); font-size: 0.85rem;">Agenciamento Artístico:</span>
+        <div style="color: var(--primary); font-weight: bold;">Talentos & Cinema Produções</div>
+      </div>
+      <div>
+        <span style="color: var(--text-muted); font-size: 0.85rem;">Contato Direto / WhatsApp:</span>
+        <div style="color: #25d366; font-weight: bold;">(21) 99999-9999</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Arthur Valente - Todos os direitos reservados. Modelo Demonstrativo de Portfólio de Ator.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal de Fotos -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="btn-close-lightbox" onclick="closeLightbox()">✕</button>
+      <div id="lightbox-img-box" class="lightbox-img-box">👤</div>
+      <div class="lightbox-details">
+        <div id="lightbox-cat" style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;"></div>
+        <h3 id="lightbox-title" style="color: #fff; font-size: 1.4rem; margin: 6px 0;"></h3>
+        <p id="lightbox-desc" style="color: var(--text-muted); font-size: 0.95rem;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="lightbox-modal">
+    <div class="lightbox-content" style="max-width: 850px;">
+      <button class="btn-close-lightbox" onclick="closeVideoModal()">✕</button>
+      <div style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 4rem; margin-bottom: 15px;">🎬</div>
+          <div id="video-modal-type" style="color: var(--primary); font-weight: bold; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px;"></div>
+          <h3 id="video-modal-title" style="color: #fff; font-size: 1.6rem; margin-bottom: 12px;"></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
+            [Espaço para reprodução do vídeo em alta resolução do ator: YouTube, Vimeo ou arquivo local MP4].
+          </p>
+          <button class="btn btn-primary" onclick="alert('Vídeo carregado com sucesso em tela cheia!')">▶ Assistir em HD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
