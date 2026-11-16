@@ -460,6 +460,34 @@ app.post('/api/admin/upload/plan-mockup/:planId', uploadSiteMockup.single('mocku
   }
 });
 
+// Degustação: lista de demos ao vivo
+app.get('/api/demos', (req, res) => {
+  res.json({ demos: db.getDemos() });
+});
+
+app.post('/api/admin/demos', (req, res) => {
+  try {
+    const b = req.body || {};
+    const url = String(b.url || '').trim();
+    if (!/^(\/|https:\/\/)/.test(url)) return res.status(400).json({ error: 'O link deve começar com / (pasta do próprio site) ou https://' });
+    const label = String(b.label || '').trim().slice(0, 40);
+    if (!label) return res.status(400).json({ error: 'Informe o nome do botão.' });
+    const item = db.addOrUpdateDemo({ id: b.id ? String(b.id) : undefined, emoji: String(b.emoji || '🌐').slice(0, 4), label, title: String(b.title || label).trim().slice(0, 80), url });
+    res.json({ success: true, item, demos: db.getDemos() });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao salvar demonstração' });
+  }
+});
+
+app.delete('/api/admin/demos/:id', (req, res) => {
+  try {
+    db.deleteDemo(req.params.id);
+    res.json({ success: true, demos: db.getDemos() });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao remover demonstração' });
+  }
+});
+
 // Portfolio / Frentes dos Sites de Demonstração
 app.get('/api/portfolio', (req, res) => {
   res.json({ portfolio: db.getPortfolio() });

@@ -2,6 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+
+const DEFAULT_DEMOS = [
+  { id: 'demo-petiscaria-delivery', emoji: '🍢', label: 'Petiscaria & Bar', title: 'Petiscaria & Espetinhos', url: '/modelos/demo-petiscaria-delivery/index.html' },
+  { id: 'demo-portfolio-artista', emoji: '🎤', label: 'Cantor & Músico', title: 'Portfólio Cantor & Músico', url: '/modelos/demo-portfolio-artista/index.html' },
+  { id: 'demo-portfolio-ator', emoji: '🎬', label: 'Ator TV & Teatro', title: 'Portfólio Ator TV & Cinema', url: '/modelos/demo-portfolio-ator/index.html' },
+  { id: 'demo-barbearia', emoji: '💈', label: 'Barbearia Premium', title: 'Barbearia Premium com Agendamento', url: '/modelos/demo-barbearia/index.html' }
+];
+const BARBEARIA_PORTFOLIO = { id: 'demo-barbearia', category: 'Barbearia & Beleza', categorySlug: 'saloes', domain: 'blackgoldbarbearia.com.br', title: 'Barbearia Premium com Agendamento', description: 'Agendamento online, perfil dos barbeiros, pagamentos e painel de gestão.', planRecommended: 'Empresarial Avançado', image: '/uploads/portfolio/site-demo-barbearia-capa.jpg', demoUrl: '/degustacao.html?modelo=demo-barbearia' };
+
 const DB_PATH = path.join(__dirname, '..', 'data', 'database.json');
 
 const INITIAL_DATA = {
@@ -294,6 +303,15 @@ function loadData() {
       data.settings.portfolio = [ ...INITIAL_DATA.settings.portfolio ];
       modified = true;
     }
+    if (!Array.isArray(data.settings.demos)) {
+      data.settings.demos = DEFAULT_DEMOS.map(d => ({ ...d }));
+      modified = true;
+    }
+    if (!data.settings._seedBarbearia) {
+      if (!data.settings.portfolio.some(p => p.id === BARBEARIA_PORTFOLIO.id)) data.settings.portfolio.push({ ...BARBEARIA_PORTFOLIO });
+      data.settings._seedBarbearia = true;
+      modified = true;
+    }
     if (modified) {
       saveData(data);
     }
@@ -473,6 +491,25 @@ const db = {
     data.settings.video = { ...data.settings.video, ...videoData };
     saveData(data);
     return data.settings.video;
+  },
+  getDemos() {
+    const settings = this.getSettings();
+    return settings.demos || [];
+  },
+  addOrUpdateDemo(item) {
+    const data = loadData();
+    if (!Array.isArray(data.settings.demos)) data.settings.demos = [];
+    const i = data.settings.demos.findIndex(d => d.id === item.id);
+    if (i >= 0) data.settings.demos[i] = { ...data.settings.demos[i], ...item };
+    else { if (!item.id) item.id = 'demo-' + Date.now(); data.settings.demos.push(item); }
+    saveData(data);
+    return item;
+  },
+  deleteDemo(id) {
+    const data = loadData();
+    data.settings.demos = (data.settings.demos || []).filter(d => d.id !== id);
+    saveData(data);
+    return true;
   },
   getPortfolio() {
     const settings = this.getSettings();

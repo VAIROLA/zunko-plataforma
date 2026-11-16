@@ -125,18 +125,8 @@
       </span>
     </div>
 
-    <!-- Switcher de Modelos -->
-    <div class="flex items-center bg-slate-900 border border-slate-800 p-1 rounded-full gap-1 overflow-x-auto">
-      <button class="model-btn active text-xs font-semibold px-3 py-1.5 rounded-full text-slate-300 flex items-center gap-1.5 whitespace-nowrap" onclick="loadModel('/modelos/demo-petiscaria-delivery/index.html', this, 'Petiscaria & Espetinhos')">
-        <span>🍢</span> <span class="hidden md:inline">Petiscaria & Bar</span><span class="md:hidden">Petiscaria</span>
-      </button>
-      <button class="model-btn text-xs font-semibold px-3 py-1.5 rounded-full text-slate-300 flex items-center gap-1.5 whitespace-nowrap" onclick="loadModel('/modelos/demo-portfolio-artista/index.html', this, 'Portfólio Cantor & Músico')">
-        <span>🎤</span> <span class="hidden md:inline">Cantor & Músico</span><span class="md:hidden">Cantor</span>
-      </button>
-      <button class="model-btn text-xs font-semibold px-3 py-1.5 rounded-full text-slate-300 flex items-center gap-1.5 whitespace-nowrap" onclick="loadModel('/modelos/demo-portfolio-ator/index.html', this, 'Portfólio Ator TV & Cinema')">
-        <span>🎬</span> <span class="hidden md:inline">Ator TV & Teatro</span><span class="md:hidden">Ator</span>
-      </button>
-    </div>
+    <!-- Switcher de Modelos (carregado de /api/demos — gerenciado no Admin > Degustação) -->
+    <div id="modelSwitcher" class="flex items-center bg-slate-900 border border-slate-800 p-1 rounded-full gap-1 overflow-x-auto"></div>
 
     <!-- Controles da Direita -->
     <div class="flex items-center gap-3">
@@ -157,7 +147,7 @@
   <!-- Viewer Sandbox -->
   <main class="preview-container">
     <div id="frameWrapper" class="frame-wrapper mode-desktop">
-      <iframe id="previewFrame" src="/modelos/demo-petiscaria-delivery/index.html" title="Degustação ZUNKO"></iframe>
+      <iframe id="previewFrame" src="about:blank" title="Degustação ZUNKO"></iframe>
     </div>
 
     <div class="watermark">
@@ -167,6 +157,24 @@
 
   <script>
     let currentModelName = 'Petiscaria & Espetinhos';
+    const FALLBACK_DEMOS = [
+      { id: 'demo-petiscaria-delivery', emoji: '🍢', label: 'Petiscaria & Bar', title: 'Petiscaria & Espetinhos', url: '/modelos/demo-petiscaria-delivery/index.html' },
+      { id: 'demo-portfolio-artista', emoji: '🎤', label: 'Cantor & Músico', title: 'Portfólio Cantor & Músico', url: '/modelos/demo-portfolio-artista/index.html' },
+      { id: 'demo-portfolio-ator', emoji: '🎬', label: 'Ator TV & Teatro', title: 'Portfólio Ator TV & Cinema', url: '/modelos/demo-portfolio-ator/index.html' }
+    ];
+    const escH = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    async function initModels() {
+      let demos = FALLBACK_DEMOS;
+      try { const r = await fetch('/api/demos'); const d = await r.json(); if (Array.isArray(d.demos) && d.demos.length) demos = d.demos; } catch (e) { }
+      const box = document.getElementById('modelSwitcher');
+      box.innerHTML = demos.map((m, i) => '<button class="model-btn text-xs font-semibold px-3 py-1.5 rounded-full text-slate-300 flex items-center gap-1.5 whitespace-nowrap" data-i="' + i + '"><span>' + escH(m.emoji) + '</span> <span>' + escH(m.label) + '</span></button>').join('');
+      const btns = box.querySelectorAll('.model-btn');
+      btns.forEach(b => b.onclick = () => { const m = demos[+b.dataset.i]; loadModel(m.url, b, m.title || m.label); });
+      const want = new URLSearchParams(location.search).get('modelo');
+      let idx = Math.max(0, demos.findIndex(m => m.id === want));
+      btns[idx].click();
+    }
 
     function loadModel(url, btn, name) {
       document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
@@ -188,6 +196,7 @@
       document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('btn-' + device).classList.add('active');
     }
+    initModels();
   </script>
 
 </body>
