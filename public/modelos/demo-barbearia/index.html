@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Black Gold Barbearia — Seu estilo merece um profissional à altura</title>
+<meta name="description" content="Barbearia premium: corte masculino, degradê, barba e muito mais. Conheça nossos barbeiros, escolha seu horário e agende online.">
+<meta property="og:title" content="Black Gold Barbearia Premium">
+<meta property="og:description" content="Seu estilo merece um profissional à altura. Agende online.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/hero.svg">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HairSalon","name":"Black Gold Barbearia","description":"Barbearia premium com agendamento online.","address":{"@type":"PostalAddress","streetAddress":"Av. Roberto Silveira, 1000","addressLocality":"Maricá","addressRegion":"RJ","addressCountry":"BR"},"priceRange":"$$","telephone":"+55 21 3000-0000"}</script>
+</head>
+<body>
+
+<main>
+  <section class="hero" id="inicio" aria-label="Apresentação">
+    <div class="container">
+      <div class="hero-box">
+        <span class="eyebrow anim-in d1">Barbearia Premium</span>
+        <h1 class="anim-in d2">Seu estilo merece um <span class="gold">profissional à altura.</span></h1>
+        <p class="anim-in d3">Cortes precisos, barba impecável e uma experiência pensada para o homem que valoriza cada detalhe. Escolha seu barbeiro e reserve online em poucos cliques.</p>
+        <div class="hero-cta anim-in d4">
+          <a class="btn btn-gold btn-lg" href="agendar.html">Agendar horário</a>
+          <a class="btn btn-lg" href="#servicos">Ver serviços</a>
+        </div>
+        <div class="hero-stats anim-in d4" id="heroStats"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container about">
+      <div class="reveal"><img src="img/ambiente.svg" alt="Ambiente da barbearia com cadeira, espelho e prateleiras" loading="lazy" width="900" height="600"></div>
+      <div class="reveal">
+        <span class="eyebrow">Sobre nós</span>
+        <h2>Tradição da navalha, <span class="gold">precisão dos dias de hoje</span></h2>
+        <p>Nascemos da paixão por barbearia clássica e do desejo de oferecer um espaço onde o homem possa relaxar, cuidar da aparência e sair com a confiança lá em cima.</p>
+        <p>Nossa equipe é formada por profissionais experientes, em constante atualização, que trabalham com produtos de alta qualidade, ambiente climatizado e atendimento sem pressa.</p>
+        <div class="feat"><div>Toalha quente e produtos premium</div><div>Agendamento online 24h</div><div>Barbeiros especialistas</div><div>Ambiente climatizado, bebidas e Wi-Fi</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="alt">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">Serviços</span><h2>Do clássico ao <span class="gold">sob medida</span></h2><div class="divider"></div></div>
+      <div class="chip-row" style="justify-content:center;margin-bottom:2rem" id="svcChips"></div>
+      <div class="grid g3 g4" id="svcGrid"></div>
+    </div>
+  </section>
+
+  <section id="barbeiros">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">Nossa equipe</span><h2>Profissionais que <span class="gold">fazem a diferença</span></h2><p>Conheça cada barbeiro, veja os trabalhos e as avaliações e agende com quem mais combina com você.</p><div class="divider"></div></div>
+      <div class="grid g4" id="barberGrid"></div>
+    </div>
+  </section>
+
+  <section id="galeria" class="alt">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">Galeria</span><h2>Trabalhos <span class="gold">que falam por si</span></h2><div class="divider"></div></div>
+      <div class="gallery reveal" id="gallery"></div>
+    </div>
+  </section>
+
+  <section id="depoimentos">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">Depoimentos</span><h2>Quem passou por aqui <span class="gold">recomenda</span></h2><div class="divider"></div></div>
+      <div class="grid g3" id="testi"></div>
+    </div>
+  </section>
+
+  <section id="contato" class="alt">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">Onde estamos</span><h2>Venha nos <span class="gold">visitar</span></h2><div class="divider"></div></div>
+      <div class="loc reveal">
+        <div class="loc-info" id="locInfo"></div>
+        <div class="map" id="map"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/app.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

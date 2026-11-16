@@ -116,6 +116,9 @@
       <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="portfolio">
         🖼️ Frentes dos Sites Demonstrativos (Portfólio)
       </button>
+      <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="degustacao">
+        🎯 Degustação (Demos ao Vivo)
+      </button>
       <button class="admin-nav-tab text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl" data-tab="leads">
         💬 Contatos / Orçamentos Recebidos
       </button>
@@ -315,6 +318,20 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-portfolio-list"></div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO: DEGUSTAÇÃO (DEMOS AO VIVO) -->
+    <div class="admin-section hidden" id="section-degustacao">
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-100 gap-4 mb-6">
+          <div>
+            <h3 class="font-bold text-xl text-slate-900 flex items-center gap-2"><span>🎯</span> Degustação — Demos ao Vivo</h3>
+            <p class="text-xs text-slate-500 mt-1">São os botões da página <b>/degustacao.html</b>. Cada demo abre um site de exemplo interativo. Para um site novo: coloque a pasta em <code>public/modelos/nome-da-pasta/</code> e use o link <code>/modelos/nome-da-pasta/index.html</code> (ou um endereço https:// externo).</p>
+          </div>
+          <button type="button" id="btn-add-demo" class="btn-primary text-xs py-2 px-4 self-start">+ Adicionar Demo</button>
+        </div>
+        <div class="space-y-3" id="admin-demos-list"></div>
       </div>
     </div>
 
@@ -531,7 +548,7 @@
   </div>
 
   <script src="/assets/js/main.js?v=4"></script>
-  <script src="/assets/js/admin.js?v=4"></script>
+  <script src="/assets/js/admin.js?v=5"></script>
   <script src="/assets/js/i18n.js?v=3"></script>
 </body>
 </html>

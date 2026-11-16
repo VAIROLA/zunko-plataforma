@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadVideoSettings();
     loadPlans();
     loadPortfolio();
+    loadDemos();
     loadLeads();
     loadPaymentSettings();
 
@@ -818,6 +819,10 @@ document.addEventListener('DOMContentLoaded', () => {
                   <input type="text" class="w-full border border-slate-700 bg-slate-800 rounded-lg p-1.5 text-xs text-white port-desc-${item.id}" value="${item.description || ''}">
                 </div>
                 <div>
+                  <label class="text-[11px] font-bold text-slate-400 block">Link de "Ver Detalhes" (ex.: /degustacao.html?modelo=demo-barbearia):</label>
+                  <input type="text" class="w-full border border-slate-700 bg-slate-800 rounded-lg p-1.5 text-xs text-white port-url-${item.id}" value="${item.demoUrl || ''}">
+                </div>
+                <div>
                   <label class="text-[11px] font-bold text-slate-400 block">Plano Recomendado:</label>
                   <input type="text" class="w-full border border-slate-700 bg-slate-800 rounded-lg p-1.5 text-xs text-white port-plan-${item.id}" value="${item.planRecommended || 'Profissional'}">
                 </div>
@@ -859,6 +864,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const domain = container.querySelector(`.port-dom-${id}`).value.trim();
           const description = container.querySelector(`.port-desc-${id}`).value.trim();
           const planRecommended = container.querySelector(`.port-plan-${id}`).value.trim();
+          const demoUrl = container.querySelector(`.port-url-${id}`).value.trim();
           const statusEl = container.querySelector(`.port-status-msg-${id}`);
           const imgEl = container.querySelector(`.portfolio-img-${id}`);
 
@@ -887,7 +893,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await fetch('/api/admin/portfolio', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id, title, category, domain, description, planRecommended })
+              body: JSON.stringify({ id, title, category, domain, description, planRecommended, demoUrl })
             });
             const data = await res.json();
             if (!data.success) throw new Error(data.error || 'Erro ao salvar');
@@ -957,6 +963,53 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       alert('Erro ao adicionar modelo: ' + err.message);
     }
+  });
+
+  // 5B. DEGUSTAÇÃO (DEMOS AO VIVO)
+  const escA = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  async function loadDemos() {
+    const box = document.getElementById('admin-demos-list');
+    if (!box) return;
+    try {
+      const data = await (await fetch('/api/demos')).json();
+      const demos = data.demos || [];
+      box.innerHTML = demos.length ? demos.map(d => `
+        <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50 grid grid-cols-1 md:grid-cols-12 gap-2 items-end" data-demo="${escA(d.id)}">
+          <div class="md:col-span-1"><label class="text-[11px] font-bold text-slate-500 block">Ícone</label><input class="w-full border border-slate-300 rounded-lg p-1.5 text-sm demo-emoji" value="${escA(d.emoji)}" maxlength="4"></div>
+          <div class="md:col-span-3"><label class="text-[11px] font-bold text-slate-500 block">Nome do botão</label><input class="w-full border border-slate-300 rounded-lg p-1.5 text-sm demo-label" value="${escA(d.label)}"></div>
+          <div class="md:col-span-3"><label class="text-[11px] font-bold text-slate-500 block">Título (mensagem do WhatsApp)</label><input class="w-full border border-slate-300 rounded-lg p-1.5 text-sm demo-title" value="${escA(d.title)}"></div>
+          <div class="md:col-span-3"><label class="text-[11px] font-bold text-slate-500 block">Link do site demo</label><input class="w-full border border-slate-300 rounded-lg p-1.5 text-sm font-mono demo-url" value="${escA(d.url)}"></div>
+          <div class="md:col-span-2 flex gap-2">
+            <button type="button" class="btn-primary text-xs py-2 px-3 flex-1 btn-save-demo">Salvar</button>
+            <a class="text-xs py-2 px-2 border border-slate-300 rounded-lg" href="/degustacao.html?modelo=${encodeURIComponent(d.id)}" target="_blank" title="Ver na Degustação">👁</a>
+            <button type="button" class="text-red-500 text-xs font-bold px-2 btn-del-demo" title="Excluir">✕</button>
+          </div>
+        </div>`).join('') : '<div class="py-8 text-center text-slate-400 text-sm">Nenhuma demo cadastrada.</div>';
+
+      box.querySelectorAll('[data-demo]').forEach(row => {
+        const id = row.getAttribute('data-demo');
+        row.querySelector('.btn-save-demo').onclick = async () => {
+          const body = { id, emoji: row.querySelector('.demo-emoji').value, label: row.querySelector('.demo-label').value, title: row.querySelector('.demo-title').value, url: row.querySelector('.demo-url').value };
+          const r = await fetch('/api/admin/demos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+          const d = await r.json();
+          if (!d.success) return alert(d.error || 'Erro ao salvar');
+          window.showToast?.('Demo salva!', 'success');
+        };
+        row.querySelector('.btn-del-demo').onclick = async () => {
+          if (!confirm('Excluir esta demo da Degustação? (Os arquivos do site não são apagados.)')) return;
+          await fetch('/api/admin/demos/' + encodeURIComponent(id), { method: 'DELETE' });
+          window.showToast?.('Demo removida.', 'success');
+          loadDemos();
+        };
+      });
+    } catch (e) { console.error(e); }
+  }
+  document.getElementById('btn-add-demo')?.addEventListener('click', async () => {
+    const r = await fetch('/api/admin/demos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ emoji: '🌐', label: 'Nova Demo', title: 'Nova Demo', url: '/modelos/nome-da-pasta/index.html' }) });
+    const d = await r.json();
+    if (!d.success) return alert(d.error || 'Erro ao adicionar');
+    window.showToast?.('Demo adicionada! Ajuste o nome e o link e clique em Salvar.', 'success');
+    loadDemos();
   });
 
   // 6. LEADS
